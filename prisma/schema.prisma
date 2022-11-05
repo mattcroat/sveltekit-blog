@@ -11,12 +11,14 @@ datasource db {
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  slug      String   @unique
-  title     String
-  markdown  String
-  published Boolean  @default(false)
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  slug        String   @unique
+  title       String
+  image       String
+  description String
+  markdown    String
+  published   Boolean  @default(false)
 
   // https://www.prisma.io/docs/concepts/components/prisma-schema/relations/many-to-many-relations#implicit-many-to-many-relations
   categories Category[]
