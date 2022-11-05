@@ -9,3 +9,22 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  slug      String   @unique
+  title     String
+  markdown  String
+  published Boolean  @default(false)
+
+  // https://www.prisma.io/docs/concepts/components/prisma-schema/relations/many-to-many-relations#implicit-many-to-many-relations
+  categories Category[]
+}
+
+model Category {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  posts Post[]
+}
