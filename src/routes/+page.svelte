@@ -1,15 +1,9 @@
 <script lang="ts">
-	const postsResponse = fetch('/api/posts').then((response) => response.json())
+	import type { PageData } from './$types'
+
+	export let data: PageData
 </script>
 
-<h2>Posts</h2>
-
-{#await postsResponse}
-	<p>Loading posts...</p>
-{:then posts}
-	<pre>
-    {JSON.stringify(posts, null, 2)}
-  </pre>
-{:catch error}
-	<p>{error.message}</p>
-{/await}
+<pre>
+ {JSON.stringify(data, null, 2)}
+</pre>
