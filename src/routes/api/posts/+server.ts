@@ -10,6 +10,9 @@ async function getPosts() {
 			slug: true,
 			title: true,
 			published: true,
+			categories: {
+				select: { name: true },
+			},
 		},
 		orderBy: { createdAt: 'asc' },
 	})
