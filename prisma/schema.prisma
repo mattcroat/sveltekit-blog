@@ -19,6 +19,7 @@ model Post {
   description String
   markdown    String
   published   Boolean  @default(false)
+  featured    Boolean  @unique @default(false)
 
   // https://www.prisma.io/docs/concepts/components/prisma-schema/relations/many-to-many-relations#implicit-many-to-many-relations
   categories Category[]
