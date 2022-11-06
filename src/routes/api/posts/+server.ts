@@ -9,7 +9,10 @@ async function getPosts() {
 			createdAt: true,
 			slug: true,
 			title: true,
+			image: true,
+			description: true,
 			published: true,
+			featured: true,
 			categories: {
 				select: { name: true },
 			},
