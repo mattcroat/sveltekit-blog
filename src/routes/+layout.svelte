@@ -1,17 +1,21 @@
 <script lang="ts">
+	import Navigation from '$lib/shared/navigation.svelte'
+
 	import '../app.css'
 </script>
 
-<div class="content">
+<svelte:head>
+	<title>Sveltr</title>
+</svelte:head>
+
+<div class="layout">
+	<Navigation />
 	<slot />
 </div>
 
 <style>
-	.content {
-		max-width: 1280px;
-		display: grid;
-		justify-content: center;
+	.layout {
+		max-width: 1200px;
 		margin-inline: auto;
-		padding: var(--size-6);
 	}
 </style>
