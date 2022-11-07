@@ -7,6 +7,8 @@
 
 	<div class="links">
 		<a href="/about">About</a>
+		<a href="/social">Twitter</a>
+		<a href="/rss">RSS</a>
 		<a href="/admin">Admin</a>
 	</div>
 </nav>
