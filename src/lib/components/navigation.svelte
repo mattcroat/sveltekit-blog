@@ -15,10 +15,7 @@
 
 <style>
 	nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: var(--size-8) 0 var(--size-10) 0;
+		padding: var(--size-6) 0;
 	}
 
 	.logo {
@@ -28,7 +25,22 @@
 	}
 
 	.links {
-		display: flex;
-		gap: var(--font-size-3);
+		display: grid;
+		margin-top: var(--size-6);
+		gap: var(--size-3);
+	}
+
+	@media (min-width: 480px) {
+		nav {
+			display: flex;
+			justify-content: space-between;
+			padding: var(--size-8) 0 var(--size-10) 0;
+		}
+
+		.links {
+			display: flex;
+			margin-top: 0;
+			gap: var(--size-3);
+		}
 	}
 </style>
