@@ -4,18 +4,19 @@ import type { PageServerLoad } from './$types'
 import { db } from '$lib/database'
 
 async function getPost(slug: string) {
-	return await db.post.findUnique({
+	const post = await db.post.findUnique({
 		where: { slug },
 		select: { markdown: true },
 	})
+
+	if (!post) {
+		throw error(404, `Not found`)
+	}
+
+	return post
 }
 
 export const load: PageServerLoad = async ({ params }) => {
 	const post = await getPost(params.slug)
-
-	if (!post) {
-		throw error(404, `Could not find ${params.slug}.`)
-	}
-
 	return { post }
 }
