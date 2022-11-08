@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { formatDate } from '$lib/utils'
-	import type { Post } from '$lib/types'
+	import type { PostWithCategories } from '$lib/types'
 
-	export let post: Post
+	export let post: PostWithCategories
 	export let featured = false
 
 	const featuredPost = featured ? 'featured' : null

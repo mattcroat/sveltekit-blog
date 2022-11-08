@@ -1,12 +1,7 @@
-export type Post = {
-	createdAt: string
-	slug: string
-	title: string
-	image: string
-	description: string
-	published: string
-	featured: boolean
-	categories: {
-		name: string
-	}[]
+import type { Post, Category } from '@prisma/client'
+
+export type PostWithCategories = Post & {
+	categories: Category[]
 }
+
+export type PostWithoutMarkdown = Omit<Post, 'markdown'>
