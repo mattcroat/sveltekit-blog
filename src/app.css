@@ -20,13 +20,20 @@
 }
 
 html {
-	background-image: var(--gradient-8);
+	background-image: radial-gradient(hsl(200 40% 8%), hsl(200 20% 4%));
 	background-attachment: fixed;
 	font-family: 'Poppins', sans-serif;
 }
 
 body {
 	padding: 0 var(--size-8);
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-weight: var(--font-weight-6);
 }
 
 a {
