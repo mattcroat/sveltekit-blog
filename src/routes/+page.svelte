@@ -23,7 +23,6 @@
 	.posts {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		padding: var(--size-8) 0;
 		gap: var(--size-8);
 	}
 </style>

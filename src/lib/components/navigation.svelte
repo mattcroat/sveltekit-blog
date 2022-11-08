@@ -15,7 +15,7 @@
 
 <style>
 	nav {
-		padding: var(--size-6) 0;
+		margin-bottom: var(--size-8);
 	}
 
 	.logo {
@@ -34,7 +34,6 @@
 		nav {
 			display: flex;
 			justify-content: space-between;
-			padding: var(--size-8) 0 var(--size-10) 0;
 		}
 
 		.links {

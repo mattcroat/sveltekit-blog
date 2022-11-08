@@ -17,5 +17,6 @@
 	.layout {
 		max-width: 1200px;
 		margin-inline: auto;
+		padding: var(--size-8) 0;
 	}
 </style>
