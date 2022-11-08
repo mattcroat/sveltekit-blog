@@ -1,25 +1,7 @@
 import { json } from '@sveltejs/kit'
 import type { RequestHandler } from './$types'
 
-import { db } from '$lib/database'
-
-async function getPosts() {
-	return await db.post.findMany({
-		select: {
-			createdAt: true,
-			slug: true,
-			title: true,
-			image: true,
-			description: true,
-			published: true,
-			featured: true,
-			categories: {
-				select: { name: true },
-			},
-		},
-		orderBy: { createdAt: 'asc' },
-	})
-}
+import { getPosts } from '$lib/posts'
 
 export const GET: RequestHandler = async () => {
 	const posts = await getPosts()
