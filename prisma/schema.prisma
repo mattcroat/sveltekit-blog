@@ -19,15 +19,15 @@ model Post {
   description String
   markdown    String
   published   Boolean  @default(false)
-  featured    Boolean  @unique @default(false)
+  featured    Boolean  @default(false)
 
-  // https://www.prisma.io/docs/concepts/components/prisma-schema/relations/many-to-many-relations#implicit-many-to-many-relations
-  categories Category[]
+  category   Categories @relation(fields: [categoryId], references: [id])
+  categoryId Int
 }
 
-model Category {
+model Categories {
   id   Int    @id @default(autoincrement())
-  name String
+  name String @unique
 
   posts Post[]
 }
