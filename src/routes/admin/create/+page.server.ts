@@ -1,9 +1,11 @@
 import type { Actions, PageServerLoad } from './$types'
 
-import { getPostWithCategories, updatePost } from '$lib/posts'
+import { createPost, getCategories } from '$lib/posts'
 
-export const load: PageServerLoad = async ({ params }) => {
-	return await getPostWithCategories(params.slug)
+export const load: PageServerLoad = async () => {
+	return {
+		categories: await getCategories(),
+	}
 }
 
 export const actions: Actions = {
@@ -22,6 +24,6 @@ export const actions: Actions = {
 
 		const category = form.get('category') as string
 
-		updatePost(post, category)
+		createPost(post, category)
 	},
 }

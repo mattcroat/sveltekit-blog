@@ -46,6 +46,7 @@ a:hover {
 }
 
 input,
+select,
 textarea,
 button {
 	border-radius: var(--radius-3);

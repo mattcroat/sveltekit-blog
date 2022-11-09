@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit'
-import type { Post } from '@prisma/client'
+import type { PostWithRequiredFields } from './types'
 
 import { db } from '$lib/database'
 
@@ -13,9 +13,7 @@ export async function getPosts() {
 			description: true,
 			published: true,
 			featured: true,
-			categories: {
-				select: { name: true },
-			},
+			category: true,
 		},
 		orderBy: { createdAt: 'asc' },
 	})
@@ -34,6 +32,20 @@ export async function getPostMarkdown(slug: string) {
 	return post
 }
 
+export async function getPostWithCategories(slug: string) {
+	const post = await db.post.findUnique({
+		where: { slug },
+		include: { category: true },
+	})
+	const categories = await db.categories.findMany()
+
+	if (!post) {
+		throw error(404, 'Not found')
+	}
+
+	return { post, categories }
+}
+
 export async function getPost(slug: string) {
 	const post = await db.post.findUnique({
 		where: { slug },
@@ -46,13 +58,35 @@ export async function getPost(slug: string) {
 	return { post }
 }
 
-export async function updatePost(slug: string, post: Post) {
-	await db.post.update({
-		where: { slug },
+export async function createPost(
+	post: PostWithRequiredFields,
+	category: string
+) {
+	await db.post.create({
 		data: {
 			...post,
-			featured: Boolean(post.featured),
-			published: Boolean(post.published),
+			category: {
+				connect: { name: category },
+			},
 		},
 	})
+}
+
+export async function updatePost(
+	post: PostWithRequiredFields,
+	category: string
+) {
+	await db.post.update({
+		where: { slug: post.slug },
+		data: {
+			...post,
+			category: {
+				connect: { name: category },
+			},
+		},
+	})
+}
+
+export async function getCategories() {
+	return await db.categories.findMany()
 }

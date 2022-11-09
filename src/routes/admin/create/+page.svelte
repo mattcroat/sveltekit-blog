@@ -3,66 +3,60 @@
 
 	export let data: PageServerData
 
-	$: ({ categories, post } = data)
+	$: ({ categories } = data)
 </script>
 
 <section>
-	<h4>Editing</h4>
+	<h4>Creating</h4>
 
 	<form method="POST">
 		<label>
 			<span>Slug</span>
-			<input type="text" name="slug" value={post.slug} required />
+			<input type="text" name="slug" placeholder="post-slug" required />
 		</label>
 
 		<label>
 			<span>Title</span>
-			<input type="text" name="title" value={post.title} required />
+			<input type="text" name="title" placeholder="Post Title" required />
 		</label>
 
 		<label>
 			<span>Image</span>
-			<input type="text" name="image" value={post.image} required />
+			<input type="text" name="image" placeholder="Unsplash image" required />
 		</label>
 
 		<label>
 			<span>Description</span>
-			<input type="text" name="description" value={post.description} required />
+			<input
+				type="text"
+				name="description"
+				placeholder="Post description"
+				required
+			/>
 		</label>
 
 		<label>
 			<span>Category</span>
 			<select name="category" required>
 				{#each categories as category}
-					{@const selected = category.name === post.category.name}
-					<option value={category.name} {selected}>{category.name}</option>
+					<option value={category.name}>{category.name}</option>
 				{/each}
 			</select>
 		</label>
 
 		<label>
 			<span>Markdown</span>
-			<textarea name="markdown" rows="10" value={post.markdown} />
+			<textarea name="markdown" rows="10" />
 		</label>
 
 		<div class="publishing">
 			<label>
-				<input
-					type="checkbox"
-					name="published"
-					checked={post.published}
-					value={post.published}
-				/>
+				<input type="checkbox" name="published" />
 				<span>Published</span>
 			</label>
 
 			<label>
-				<input
-					type="checkbox"
-					name="featured"
-					checked={post.featured}
-					value={post.featured}
-				/>
+				<input type="checkbox" name="featured" />
 				<span>Featured</span>
 			</label>
 		</div>

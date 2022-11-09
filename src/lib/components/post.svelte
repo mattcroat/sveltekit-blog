@@ -15,7 +15,7 @@
 		</div>
 
 		<div class="details">
-			<div class="category">{post.categories[0].name}</div>
+			<div class="category">{post.category.name}</div>
 			<h2 class="title">{post.title}</h2>
 
 			<p class="description">{post.description}</p>
