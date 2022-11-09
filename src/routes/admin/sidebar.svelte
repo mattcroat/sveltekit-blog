@@ -1,5 +1,10 @@
 <script lang="ts">
-	export let posts: any
+	type Post = {
+		slug: string
+		title: string
+	}
+
+	export let posts: Post[]
 </script>
 
 <aside>

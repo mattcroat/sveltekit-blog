@@ -1,13 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
 
 @import 'open-props/style';
-
 @import 'open-props/normalize';
-@import 'open-props/buttons';
 
-/* * {
-	outline: 1px solid var(--gray-7);
-} */
+* {
+	outline: 1px solid var(--gray-9);
+}
 
 :root {
 	--brand: var(--red-5);
@@ -45,4 +43,23 @@ a {
 a:hover {
 	color: var(--brand);
 	text-decoration: none;
+}
+
+input,
+textarea,
+button {
+	border-radius: var(--radius-3);
+}
+
+.btn {
+	padding: var(--size-2) var(--size-4);
+	border-radius: var(--radius-3);
+	background-color: var(--gray-9);
+	color: var(--gray-0);
+	font-weight: var(--font-weight-6);
+	transition: all 0.3s ease;
+}
+
+.btn:hover {
+	color: var(--brand);
 }

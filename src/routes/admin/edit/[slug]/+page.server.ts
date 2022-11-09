@@ -10,7 +10,7 @@ export const load: PageServerLoad = async ({ params }) => {
 export const actions: Actions = {
 	default: async ({ request }) => {
 		const form = await request.formData()
-		// todo: I kind of hate this
+		// todo: I hate this
 		const entries = Object.fromEntries(form) as unknown as Post
 		updatePost(entries.slug, entries)
 	},
