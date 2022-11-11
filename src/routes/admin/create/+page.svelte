@@ -17,7 +17,7 @@
 
 		<label>
 			<span>Title</span>
-			<input type="text" name="title" placeholder="Post Title" required />
+			<input type="text" name="title" placeholder="Post title" required />
 		</label>
 
 		<label>
