@@ -9,7 +9,7 @@
 <section>
 	<h4>Editing</h4>
 
-	<form method="POST">
+	<form method="POST" action="?/save">
 		<label>
 			<span>Slug</span>
 			<input type="text" name="slug" value={post.slug} required />
@@ -67,7 +67,12 @@
 			</label>
 		</div>
 
-		<button class="btn" type="submit">Save</button>
+		<div class="actions">
+			<button class="btn" type="submit">Save</button>
+			<button formaction="?/delete" class="btn btn-danger" type="submit">
+				Delete
+			</button>
+		</div>
 	</form>
 </section>
 
@@ -117,5 +122,11 @@
 	.publishing {
 		display: flex;
 		gap: var(--size-3);
+	}
+
+	.actions {
+		display: flex;
+		margin-top: var(--size-3);
+		gap: var(--size-2);
 	}
 </style>

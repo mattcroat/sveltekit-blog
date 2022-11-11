@@ -90,3 +90,7 @@ export async function updatePost(
 export async function getCategories() {
 	return await db.categories.findMany()
 }
+
+export async function deletePost(slug: string) {
+	await db.post.delete({ where: { slug } })
+}
