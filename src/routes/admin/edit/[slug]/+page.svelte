@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms'
 	import type { PageServerData } from './$types'
 
 	export let data: PageServerData
@@ -9,7 +10,7 @@
 <section>
 	<h4>Editing</h4>
 
-	<form method="POST" action="?/save">
+	<form method="POST" action="?/save" use:enhance>
 		<label>
 			<span>Slug</span>
 			<input type="text" name="slug" value={post.slug} required />
