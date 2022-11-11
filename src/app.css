@@ -55,12 +55,20 @@ button {
 .btn {
 	padding: var(--size-2) var(--size-4);
 	border-radius: var(--radius-3);
-	background-color: var(--gray-9);
+	background-color: var(--gray-8);
 	color: var(--gray-0);
 	font-weight: var(--font-weight-6);
 	transition: all 0.3s ease;
 }
 
 .btn:hover {
-	color: var(--brand);
+	background-color: var(--gray-9);
+}
+
+.btn-danger {
+	background: var(--red-8);
+}
+
+.btn-danger:hover {
+	background-color: var(--red-9);
 }
