@@ -9,7 +9,7 @@
 <section>
 	<h4>Creating</h4>
 
-	<form method="POST">
+	<form method="POST" action="?/create">
 		<label>
 			<span>Slug</span>
 			<input type="text" name="slug" placeholder="post-slug" required />

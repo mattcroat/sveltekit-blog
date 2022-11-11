@@ -1,6 +1,7 @@
 import type { Actions, PageServerLoad } from './$types'
 
 import { createPost, getCategories } from '$lib/posts'
+import { redirect } from '@sveltejs/kit'
 
 export const load: PageServerLoad = async () => {
 	return {
@@ -9,21 +10,21 @@ export const load: PageServerLoad = async () => {
 }
 
 export const actions: Actions = {
-	default: async ({ request }) => {
-		const form = await request.formData()
+	create: async ({ request }) => {
+		const data = await request.formData()
 
 		const post = {
-			slug: form.get('slug') as string,
-			title: form.get('title') as string,
-			image: form.get('image') as string,
-			description: form.get('description') as string,
-			markdown: form.get('markdown') as string,
-			published: !!form.get('published'),
-			featured: !!form.get('featured'),
+			slug: data.get('slug') as string,
+			title: data.get('title') as string,
+			image: data.get('image') as string,
+			description: data.get('description') as string,
+			markdown: data.get('markdown') as string,
+			published: !!data.get('published'),
+			featured: !!data.get('featured'),
 		}
-
-		const category = form.get('category') as string
-
+		const category = data.get('category') as string
 		createPost(post, category)
+
+		throw redirect(303, '/admin')
 	},
 }
