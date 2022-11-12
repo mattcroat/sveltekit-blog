@@ -3,18 +3,20 @@
 	import type { PageData } from './$types'
 
 	export let data: PageData
+
+	$: ({ posts } = data)
 </script>
 
-{#each data.posts as post}
-	<div class="featured">
-		{#if post.featured}
+{#each posts as post}
+	{#if post.featured}
+		<div class="featured">
 			<Post {post} featured />
-		{/if}
-	</div>
+		</div>
+	{/if}
 {/each}
 
 <div class="posts">
-	{#each data.posts as post}
+	{#each posts as post}
 		<Post {post} />
 	{/each}
 </div>
@@ -22,7 +24,7 @@
 <style>
 	.posts {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 		margin-top: var(--size-8);
 		gap: var(--size-8);
 	}
