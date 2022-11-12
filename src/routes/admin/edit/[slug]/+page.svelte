@@ -79,7 +79,7 @@
 
 <style>
 	section {
-		padding: var(--size-8);
+		padding: var(--size-6);
 	}
 
 	form {

@@ -23,7 +23,7 @@
 	@media (min-width: 768px) {
 		main {
 			display: grid;
-			grid-template-columns: 20% 1fr;
+			grid-template-columns: 28% 1fr;
 		}
 	}
 </style>

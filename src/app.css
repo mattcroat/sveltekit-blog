@@ -40,6 +40,7 @@ a {
 	margin: 0;
 	padding: 0;
 	color: var(--gray-4);
+	transition: all 0.3s ease;
 }
 
 a:hover {
@@ -51,7 +52,9 @@ input,
 select,
 textarea,
 button {
+	border: 1px solid var(--gray-9);
 	border-radius: var(--radius-3);
+	box-shadow: var(--shadow-1);
 }
 
 .btn {
