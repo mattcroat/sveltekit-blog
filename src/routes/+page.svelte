@@ -8,7 +8,7 @@
 </script>
 
 {#each posts as post}
-	{#if post.featured}
+	{#if post.featured && post.published}
 		<div class="featured">
 			<Post {post} featured />
 		</div>
@@ -17,7 +17,9 @@
 
 <div class="posts">
 	{#each posts as post}
-		<Post {post} />
+		{#if post.published}
+			<Post {post} />
+		{/if}
 	{/each}
 </div>
 
