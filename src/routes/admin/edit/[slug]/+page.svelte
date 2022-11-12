@@ -91,9 +91,11 @@
 
 	label {
 		display: grid;
+		color: var(--gray-0);
 	}
 
 	label span {
+		color: var(--gray-6);
 		font-weight: var(--font-weight-6);
 	}
 
@@ -123,6 +125,10 @@
 	.publishing {
 		display: flex;
 		gap: var(--size-3);
+	}
+
+	.publishing label span {
+		color: var(--gray-0);
 	}
 
 	.actions {

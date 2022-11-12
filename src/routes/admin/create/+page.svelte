@@ -62,13 +62,15 @@
 			</label>
 		</div>
 
-		<button class="btn" type="submit">Save</button>
+		<div class="actions">
+			<button class="btn" type="submit">Save</button>
+		</div>
 	</form>
 </section>
 
 <style>
 	section {
-		padding: var(--size-8);
+		padding: var(--size-6);
 	}
 
 	form {
@@ -80,9 +82,11 @@
 
 	label {
 		display: grid;
+		color: var(--gray-0);
 	}
 
 	label span {
+		color: var(--gray-6);
 		font-weight: var(--font-weight-6);
 	}
 
@@ -112,5 +116,13 @@
 	.publishing {
 		display: flex;
 		gap: var(--size-3);
+	}
+
+	.publishing label span {
+		color: var(--gray-0);
+	}
+
+	.actions {
+		margin-top: var(--size-3);
 	}
 </style>
