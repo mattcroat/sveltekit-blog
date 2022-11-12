@@ -5,7 +5,7 @@
 	export let post: PostWithCategories
 	export let featured = false
 
-	const featuredPost = featured ? 'featured' : null
+	const featuredPost = featured ? 'featured' : 'regular'
 </script>
 
 <a href={post.slug}>
@@ -40,9 +40,8 @@
 		overflow: hidden;
 	}
 
-	.cover img {
+	img {
 		width: 100%;
-		height: 100%;
 		object-fit: cover;
 		object-position: top;
 		border-radius: var(--radius-3);
@@ -50,11 +49,23 @@
 		transition: all 0.3s ease;
 	}
 
+	.post[data-post='regular'] img {
+		height: 480px;
+	}
+
+	.post[data-post='featured'] img {
+		height: 400px;
+	}
+
 	.details {
 		display: grid;
 		grid-auto-rows: min-content;
 		padding: 0 var(--size-3);
 		gap: var(--size-3);
+	}
+
+	.post[data-post='featured'] .details {
+		padding: 0 var(--size-6);
 	}
 
 	.title {
@@ -77,10 +88,6 @@
 
 	.description {
 		color: var(--gray-4);
-	}
-
-	.post[data-post='featured'] .details {
-		padding: 0 var(--size-6);
 	}
 
 	@media (min-width: 768px) {
