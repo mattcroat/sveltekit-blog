@@ -87,6 +87,10 @@
 	}
 
 	.description {
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+		display: -webkit-box;
+		overflow: hidden;
 		color: var(--gray-4);
 	}
 
