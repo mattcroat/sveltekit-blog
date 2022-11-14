@@ -15,7 +15,7 @@ export async function getPosts() {
 			featured: true,
 			category: true,
 		},
-		orderBy: { createdAt: 'asc' },
+		orderBy: { createdAt: 'desc' },
 	})
 }
 
