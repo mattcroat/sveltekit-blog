@@ -7,7 +7,7 @@
 	$: ({ categories } = data)
 </script>
 
-<section>
+<section class="editor">
 	<h4>Creating</h4>
 
 	<form method="POST" action="?/create" use:enhance>
@@ -63,66 +63,7 @@
 		</div>
 
 		<div class="actions">
-			<button class="btn" type="submit">Save</button>
+			<button class="button" type="submit">Save</button>
 		</div>
 	</form>
 </section>
-
-<style>
-	section {
-		padding: var(--size-6);
-	}
-
-	form {
-		display: grid;
-		justify-items: start;
-		margin-top: var(--size-6);
-		gap: var(--size-3);
-	}
-
-	label {
-		display: grid;
-		color: var(--gray-0);
-	}
-
-	label span {
-		color: var(--gray-6);
-		font-weight: var(--font-weight-6);
-	}
-
-	label:has(input[type='checkbox']) {
-		display: block;
-	}
-
-	label:has(textarea) {
-		width: 100%;
-	}
-
-	input,
-	select {
-		margin-top: var(--size-2);
-		padding: var(--size-3);
-	}
-
-	select {
-		text-transform: lowercase;
-	}
-
-	textarea {
-		margin-top: var(--size-2);
-		padding: var(--size-3);
-	}
-
-	.publishing {
-		display: flex;
-		gap: var(--size-3);
-	}
-
-	.publishing label span {
-		color: var(--gray-0);
-	}
-
-	.actions {
-		margin-top: var(--size-3);
-	}
-</style>

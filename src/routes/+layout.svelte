@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Navigation from '$lib/components/navigation.svelte'
 
-	import '../app.css'
+	import '../app.postcss'
 </script>
 
 <svelte:head>
@@ -13,7 +13,7 @@
 	<slot />
 </div>
 
-<style>
+<style lang="postcss">
 	.layout {
 		max-width: 1200px;
 		margin-inline: auto;

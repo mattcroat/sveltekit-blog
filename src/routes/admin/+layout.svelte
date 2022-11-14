@@ -8,20 +8,18 @@
 	$: ({ posts } = data)
 </script>
 
-<main>
+<main class="surface2">
 	<Sidebar {posts} />
 	<slot />
 </main>
 
-<style>
+<style lang="postcss">
 	main {
 		overflow: hidden;
 		border-radius: var(--radius-3);
-		background-color: hsl(220 20% 8%);
-	}
+		box-shadow: var(--shadow-2);
 
-	@media (min-width: 768px) {
-		main {
+		@media (--md-n-above) {
 			display: grid;
 			grid-template-columns: 28% 1fr;
 		}

@@ -23,7 +23,7 @@
 	{/each}
 </div>
 
-<style>
+<style lang="postcss">
 	.posts {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
