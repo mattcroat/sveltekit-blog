@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Navigation from '$lib/components/navigation.svelte'
 
-	import '../app.postcss'
+	import '../styles/app.postcss'
 </script>
 
 <svelte:head>

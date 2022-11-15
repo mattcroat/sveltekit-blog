@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
+*:focus {
+	border-radius: var(--radius-3);
+}
+
+html {
+	background: var(--surface1);
+	color: var(--text1);
+	accent-color: var(--brand);
+}
+
+body {
+	padding: 0 var(--size-8);
+}
+
+h1,
+h2,
+h3,
+h4 {
+	color: var(--text1);
+	font-weight: var(--font-weight-6);
+}
+
+a {
+	margin: 0;
+	padding: 0;
+	color: var(--text1);
+	transition: all 0.3s ease;
+
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+input,
+select,
+textarea,
+button {
+	border: 1px solid hsl(0 0% 34%);
+	border-radius: var(--radius-3);
+}
+
+[data-theme='light'] :is(input, select, textarea, button) {
+	border: 1px solid hsl(0 0% 84%);
+}
+
+.button {
+	--_bg: var(--surface3);
+	--_text: var(--text1);
+
+	padding: var(--size-2) var(--size-4);
+	border-radius: var(--radius-3);
+	background: var(--_bg);
+	box-shadow: var(--shadow-1);
+	color: var(--_text);
+	font-weight: var(--font-weight-6);
+	transition: all 0.3s ease;
+
+	&:hover {
+		--_bg: var(--surface4);
+	}
+
+	&.primary {
+		--_bg: var(--teal-8);
+		--_text: var(--text3);
+	}
+
+	&.primary:hover {
+		--_bg: var(--teal-7);
+	}
+
+	&.danger {
+		--_bg: var(--red-8);
+		--_text: var(--gray-0);
+	}
+
+	&.danger:hover {
+		--_bg: var(--red-7);
+	}
+}
+
+.editor {
+	padding: var(--size-6);
+
+	& form {
+		display: grid;
+		justify-items: start;
+		margin-top: var(--size-6);
+		gap: var(--size-3);
+	}
+
+	& :is(input, select, textarea) {
+		background: var(--surface3);
+	}
+
+	& label {
+		display: grid;
+		color: var(--text1);
+	}
+
+	& label span {
+		color: var(--text1);
+	}
+
+	& label:has(textarea) {
+		width: 100%;
+	}
+
+	& :is(input, select) {
+		margin-top: var(--size-2);
+		padding: var(--size-3);
+	}
+
+	& select {
+		text-transform: lowercase;
+	}
+
+	& textarea {
+		margin-top: var(--size-2);
+		padding: var(--size-3);
+	}
+
+	& .publishing {
+		display: flex;
+		gap: var(--size-3);
+
+		& input {
+			margin: 0;
+		}
+
+		& label {
+			display: flex;
+			align-items: center;
+			gap: var(--size-1);
+		}
+	}
+
+	& .publishing label span {
+		color: var(--text1);
+	}
+
+	& .actions {
+		display: flex;
+		margin-top: var(--size-3);
+		gap: var(--size-2);
+	}
+}
