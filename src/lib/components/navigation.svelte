@@ -22,7 +22,7 @@
 	nav {
 		margin-bottom: var(--size-8);
 
-		@media (--sm-n-above) {
+		@media (--small) {
 			display: flex;
 			justify-content: space-between;
 		}
@@ -38,7 +38,7 @@
 			margin-top: 0;
 			gap: var(--size-3);
 
-			@media (--sm-n-above) {
+			@media (--small) {
 				display: flex;
 				margin-top: 0;
 				gap: var(--size-6);

@@ -8,7 +8,7 @@
 	const featuredPost = featured ? 'featured' : 'regular'
 </script>
 
-<a href={post.slug}>
+<a class="link" href={post.slug}>
 	<article class="post" data-post={featuredPost}>
 		<div class="cover">
 			<img src={post.image} alt={post.title} />
@@ -26,7 +26,7 @@
 </a>
 
 <style lang="postcss">
-	a {
+	.link {
 		&:hover img {
 			scale: 1.2;
 		}
@@ -64,7 +64,7 @@
 			padding: 0 var(--size-6);
 		}
 
-		@media (--md-n-above) {
+		@media (--medium) {
 			&[data-post='featured'] {
 				display: grid;
 				grid-template-columns: repeat(2, 1fr);
@@ -90,7 +90,7 @@
 		}
 
 		& time {
-			color: var(--text3);
+			color: var(--text2);
 		}
 
 		& .category {

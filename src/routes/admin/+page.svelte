@@ -1,7 +1,7 @@
 <section>
 	<h2>Editor</h2>
 	<p>You can create a post or edit an existing one.</p>
-	<a href="/admin/create" class="button">+Add post</a>
+	<a href="/admin/create" class="button primary">+Add post</a>
 </section>
 
 <style>

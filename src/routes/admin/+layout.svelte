@@ -8,7 +8,7 @@
 	$: ({ posts } = data)
 </script>
 
-<main class="surface2">
+<main>
 	<Sidebar {posts} />
 	<slot />
 </main>
@@ -17,9 +17,10 @@
 	main {
 		overflow: hidden;
 		border-radius: var(--radius-3);
+		background: var(--surface2);
 		box-shadow: var(--shadow-2);
 
-		@media (--md-n-above) {
+		@media (--medium) {
 			display: grid;
 			grid-template-columns: 28% 1fr;
 		}

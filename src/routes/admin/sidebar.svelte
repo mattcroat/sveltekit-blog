@@ -7,7 +7,7 @@
 	export let posts: Post[]
 </script>
 
-<aside class="surface3">
+<aside>
 	<h4>Posts</h4>
 
 	<nav>
@@ -22,22 +22,37 @@
 <style lang="postcss">
 	aside {
 		padding: var(--size-6);
+		border-right: 1px solid hsl(0 0% 24%);
+
+		@nest :global([data-theme='light']) & {
+			border-right: 1px solid hsl(0 0% 90%);
+		}
 
 		& nav {
 			display: grid;
-			margin-top: var(--size-6);
+			margin-top: var(--size-3);
 			gap: var(--size-3);
 		}
 
 		& a {
-			padding: 1rem;
+			padding: var(--size-3);
 			overflow: hidden;
+			border: 1px solid hsl(0 0% 34%);
 			border-radius: var(--radius-3);
-			background: var(--surface1);
+			background: var(--surface3);
 			box-shadow: var(--shadow-1);
+			color: var(--text2);
 			text-overflow: ellipsis;
 			text-transform: capitalize;
 			white-space: nowrap;
+
+			@nest :global([data-theme='light']) & {
+				border: 1px solid hsl(0 0% 84%);
+			}
+
+			&:hover {
+				color: var(--text1);
+			}
 		}
 	}
 </style>
