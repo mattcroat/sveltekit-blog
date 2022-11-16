@@ -36,21 +36,22 @@ a {
 
 input,
 select,
-textarea,
-button {
+textarea {
 	border: 1px solid hsl(0 0% 34%);
 	border-radius: var(--radius-3);
 }
 
-[data-theme='light'] :is(input, select, textarea, button) {
+[data-theme='light'] :is(input, select, textarea) {
 	border: 1px solid hsl(0 0% 84%);
 }
 
 .button {
 	--_bg: var(--surface3);
 	--_text: var(--text1);
+	--_border: transparent;
 
 	padding: var(--size-2) var(--size-4);
+	border: 1px solid var(--_border);
 	border-radius: var(--radius-3);
 	background: var(--_bg);
 	box-shadow: var(--shadow-1);
@@ -63,32 +64,41 @@ button {
 	}
 
 	&.primary {
-		--_bg: var(--teal-8);
-		--_text: var(--text3);
+		--_bg: var(--teal-0);
+		--_text: var(--teal-9);
+		--_border: var(--teal-1);
+
+		&:hover {
+			--_bg: var(--teal-1);
+		}
 	}
 
-	&.primary:hover {
-		--_bg: var(--teal-7);
+	&.secondary {
+		--_bg: none;
+
+		box-shadow: none;
+		text-decoration: underline;
+		text-underline-offset: 6px;
 	}
 
 	&.danger {
-		--_bg: var(--red-8);
-		--_text: var(--gray-0);
-	}
+		--_bg: var(--red-0);
+		--_text: var(--red-9);
+		--_border: var(--red-1);
 
-	&.danger:hover {
-		--_bg: var(--red-7);
+		&:hover {
+			--_bg: var(--red-1);
+		}
 	}
 }
 
 .editor {
-	padding: var(--size-6);
+	padding: var(--size-6) var(--size-8);
 
 	& form {
 		display: grid;
 		justify-items: start;
-		margin-top: var(--size-6);
-		gap: var(--size-3);
+		gap: var(--size-6);
 	}
 
 	& :is(input, select, textarea) {
@@ -122,6 +132,12 @@ button {
 		padding: var(--size-3);
 	}
 
+	& .top {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+	}
+
 	& .publishing {
 		display: flex;
 		gap: var(--size-3);
@@ -142,8 +158,6 @@ button {
 	}
 
 	& .actions {
-		display: flex;
 		margin-top: var(--size-3);
-		gap: var(--size-2);
 	}
 }

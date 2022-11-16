@@ -8,9 +8,9 @@
 </script>
 
 <section class="editor">
-	<h4>Creating</h4>
-
 	<form method="POST" action="?/create" use:enhance>
+		<h4>Creating</h4>
+
 		<label>
 			<span>Slug</span>
 			<input type="text" name="slug" placeholder="post-slug" required />
@@ -63,7 +63,7 @@
 		</div>
 
 		<div class="actions">
-			<button class="button" type="submit">Save</button>
+			<button class="button primary" type="submit">Save</button>
 		</div>
 	</form>
 </section>

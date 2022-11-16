@@ -8,9 +8,14 @@
 </script>
 
 <section class="editor">
-	<h4>Editing</h4>
-
 	<form method="POST" action="?/save" use:enhance>
+		<div class="top">
+			<h4>Editing</h4>
+			<button formaction="?/delete" class="button danger" type="submit">
+				Delete
+			</button>
+		</div>
+
 		<label>
 			<span>Slug</span>
 			<input type="text" name="slug" value={post.slug} required />
@@ -69,10 +74,15 @@
 		</div>
 
 		<div class="actions">
-			<button class="button" type="submit">Save</button>
-			<button formaction="?/delete" class="button danger" type="submit">
-				Delete
-			</button>
+			<button class="button primary" type="submit">Save</button>
+			<a
+				class="button secondary"
+				href="/{post.slug}?preview"
+				target="_blank"
+				rel="noreferrer"
+			>
+				Preview
+			</a>
 		</div>
 	</form>
 </section>

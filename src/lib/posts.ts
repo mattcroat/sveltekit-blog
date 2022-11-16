@@ -19,14 +19,14 @@ export async function getPosts() {
 	})
 }
 
-export async function getPostMarkdown(slug: string) {
+export async function getPostMarkdown(slug: string, isPreview: boolean) {
 	const post = await db.post.findUnique({
 		where: { slug },
-		select: { markdown: true },
+		select: { markdown: true, published: true },
 	})
 
-	if (!post) {
-		throw error(404, `Not found`)
+	if (!post || (!post.published && !isPreview)) {
+		throw error(404, 'Not found')
 	}
 
 	return post
