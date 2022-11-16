@@ -35,23 +35,21 @@
 		}
 
 		& a {
+			--_color: var(--text2);
+
 			padding: var(--size-3);
 			overflow: hidden;
 			border: 1px solid hsl(0 0% 34%);
 			border-radius: var(--radius-3);
 			background: var(--surface3);
 			box-shadow: var(--shadow-1);
-			color: var(--text2);
+			text-decoration: none;
 			text-overflow: ellipsis;
 			text-transform: capitalize;
 			white-space: nowrap;
 
 			@nest :global([data-theme='light']) & {
 				border: 1px solid hsl(0 0% 84%);
-			}
-
-			&:hover {
-				color: var(--text1);
 			}
 		}
 	}

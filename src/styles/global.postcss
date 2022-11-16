@@ -24,13 +24,18 @@ h4 {
 }
 
 a {
+	--_color: var(--brand);
+
 	margin: 0;
 	padding: 0;
 	color: var(--text1);
 	transition: all 0.3s ease;
 
 	&:hover {
-		text-decoration: none;
+		color: var(--_color);
+		text-decoration-color: var(--_color);
+		text-decoration-thickness: 2px;
+		text-underline-offset: 6px;
 	}
 }
 

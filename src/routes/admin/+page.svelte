@@ -14,6 +14,9 @@
 	}
 
 	a {
+		--_color: var(--teal-8);
+
 		margin-top: var(--size-2);
+		text-decoration: none;
 	}
 </style>
