@@ -23,6 +23,8 @@ export const actions: Actions = {
 		const category = data.get('category') as string
 
 		updatePost(post, category)
+
+		throw redirect(303, `/admin/edit/${post.slug}`)
 	},
 	delete: async ({ request }) => {
 		const data = await request.formData()
