@@ -5,6 +5,7 @@ import { db } from '$lib/database'
 
 export async function getPosts() {
 	return await db.post.findMany({
+		where: { published: true },
 		select: {
 			createdAt: true,
 			slug: true,
@@ -12,10 +13,27 @@ export async function getPosts() {
 			image: true,
 			description: true,
 			published: true,
-			featured: true,
 			category: true,
 		},
 		orderBy: { createdAt: 'desc' },
+	})
+}
+
+export async function getFeaturedPost() {
+	return await db.post.findFirst({
+		where: {
+			featured: true,
+			published: true,
+		},
+		select: {
+			createdAt: true,
+			slug: true,
+			title: true,
+			image: true,
+			description: true,
+			published: true,
+			category: true,
+		},
 	})
 }
 

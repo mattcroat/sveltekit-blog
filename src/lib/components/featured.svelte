@@ -6,14 +6,14 @@
 </script>
 
 <a href={post.slug}>
-	<article>
+	<article class="grid grid-cols-2" style:--gap="var(--spacing5)">
 		<div class="scale">
 			<img src={post.image} alt={post.title} />
 		</div>
 
-		<div class="space mt-3">
+		<div class="space">
 			<div class="brand lowercase">{post.category.name}</div>
-			<h2 class="size-4 font-bold capitalize">{post.title}</h2>
+			<h2 class="size-5 font-bold capitalize">{post.title}</h2>
 			<p class="text-4 lines-4">{post.description}</p>
 			<time class="block">{formatDate(post.createdAt)}</time>
 		</div>
@@ -36,7 +36,7 @@
 		}
 
 		& img {
-			aspect-ratio: 1 / 1.3;
+			aspect-ratio: 1.5 / 1;
 			object-fit: cover;
 		}
 	}

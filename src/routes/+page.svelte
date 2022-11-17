@@ -1,33 +1,19 @@
 <script lang="ts">
+	import FeaturedPost from '$lib/components/featured.svelte'
 	import Post from '$lib/components/post.svelte'
 	import type { PageData } from './$types'
 
 	export let data: PageData
 
-	$: ({ posts } = data)
+	$: ({ featured, posts } = data)
 </script>
 
-{#each posts as post}
-	{#if post.featured && post.published}
-		<div class="featured">
-			<Post {post} featured />
-		</div>
-	{/if}
-{/each}
+<div class="container mt-5">
+	<FeaturedPost post={featured} />
 
-<div class="posts">
-	{#each posts as post}
-		{#if post.published}
+	<div class="grid grid-cols-posts mt-5" style:--gap="var(--spacing5)">
+		{#each posts as post}
 			<Post {post} />
-		{/if}
-	{/each}
+		{/each}
+	</div>
 </div>
-
-<style lang="postcss">
-	.posts {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-		margin-top: var(--size-8);
-		gap: var(--size-8);
-	}
-</style>

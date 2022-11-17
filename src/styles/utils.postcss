@@ -1,0 +1,145 @@
+/* layout */
+.container {
+	--width: 1200px;
+	--padding: var(--spacing5);
+
+	max-width: min(var(--width), 100% - var(--padding));
+	margin-inline: auto;
+}
+
+.block {
+	display: block;
+}
+.flex {
+	display: flex;
+	gap: var(--gap, 0);
+}
+.grid {
+	display: grid;
+	gap: var(--gap, 0);
+}
+.grid-cols-posts {
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.grid-cols-2 {
+	grid-template-columns: repeat(2, 1fr);
+}
+.justify-between {
+	justify-content: space-between;
+}
+.items-center {
+	align-items: center;
+}
+.place-content-center {
+	place-content: center;
+}
+.place-items-center {
+	place-items: center;
+}
+
+/* spacing */
+.space > * + * {
+	margin-top: var(--space, var(--spacing2));
+}
+
+/* margin */
+.mt-1 {
+	margin-top: var(--spacing1);
+}
+.mt-2 {
+	margin-top: var(--spacing2);
+}
+.mt-3 {
+	margin-top: var(--spacing3);
+}
+.mt-4 {
+	margin-top: var(--spacing4);
+}
+.mt-5 {
+	margin-top: var(--spacing5);
+}
+
+/* font family */
+.font-sans {
+	font-family: var(--font-sans);
+}
+.font-mono {
+	font-family: var(--font-sans);
+}
+
+/* font size */
+.size-1 {
+	font-size: var(--font-size-1);
+}
+.size-2 {
+	font-size: var(--font-size-2);
+}
+.size-3 {
+	font-size: var(--font-size-3);
+}
+.size-4 {
+	font-size: var(--font-size-4);
+}
+.size-5 {
+	font-size: var(--font-size-5);
+}
+
+/* font weight */
+.font-normal {
+	font-weight: var(--font-normal);
+}
+.font-semibold {
+	font-weight: var(--font-semibold);
+}
+.font-bold {
+	font-weight: var(--font-bold);
+}
+.font-black {
+	font-weight: var(--font-black);
+}
+
+/* background */
+.bg-1 {
+	background: var(--surface1);
+}
+.bg-2 {
+	background: var(--surface2);
+}
+.bg-3 {
+	background: var(--surface3);
+}
+.bg-4 {
+	background: var(--surface4);
+}
+
+/* text */
+.brand {
+	color: var(--brand);
+}
+.text-1 {
+	color: var(--text1);
+}
+.text-2 {
+	color: var(--text2);
+}
+.text-3 {
+	color: var(--text3);
+}
+.text-4 {
+	color: var(--text4);
+}
+.uppercase {
+	text-transform: uppercase;
+}
+.capitalize {
+	text-transform: capitalize;
+}
+.lowercase {
+	text-transform: lowercase;
+}
+.lines-4 {
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	display: -webkit-box;
+	overflow: hidden;
+}
