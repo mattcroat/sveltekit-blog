@@ -1,12 +1,31 @@
-import type { Post, Categories } from '@prisma/client'
+import { Prisma } from '@prisma/client'
 
-export type PostWithCategories = Post & {
-	category: Categories
-}
+const postWithCategory = Prisma.validator<Prisma.PostArgs>()({
+	select: {
+		createdAt: true,
+		slug: true,
+		title: true,
+		image: true,
+		description: true,
+		published: true,
+		category: true,
+	},
+})
 
-export type PostWithoutMarkdown = Omit<Post, 'markdown'>
+const postWithRequiredFields = Prisma.validator<Prisma.PostArgs>()({
+	select: {
+		slug: true,
+		title: true,
+		image: true,
+		description: true,
+		markdown: true,
+		published: true,
+		featured: true,
+	},
+})
 
-export type PostWithRequiredFields = Omit<
-	Post,
-	'id' | 'createdAt' | 'categoryId'
+export type PostWithCategory = Prisma.PostGetPayload<typeof postWithCategory>
+
+export type PostWithRequiredFields = Prisma.PostGetPayload<
+	typeof postWithRequiredFields
 >

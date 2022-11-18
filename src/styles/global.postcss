@@ -2,167 +2,83 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 
 *:focus {
-	border-radius: var(--radius-3);
+	border-radius: var(--round-1);
 }
 
 html {
-	background: var(--surface1);
-	color: var(--text1);
 	accent-color: var(--brand);
 }
 
 body {
-	padding: 0 var(--size-8);
+	padding-bottom: var(--space-4);
 }
 
 h1,
 h2,
 h3,
 h4 {
-	color: var(--text1);
-	font-weight: var(--font-weight-6);
+	font-weight: var(--font-semibold);
+}
+
+img {
+	min-width: 100%;
+	min-height: 100%;
+	border-radius: var(--round-1);
 }
 
 a {
-	--_color: var(--brand);
-
 	margin: 0;
 	padding: 0;
-	color: var(--text1);
-	transition: all 0.3s ease;
-
-	&:hover {
-		color: var(--_color);
-		text-decoration-color: var(--_color);
-		text-decoration-thickness: 2px;
-		text-underline-offset: 6px;
-	}
-}
-
-input,
-select,
-textarea {
-	border: 1px solid hsl(0 0% 34%);
-	border-radius: var(--radius-3);
-}
-
-[data-theme='light'] :is(input, select, textarea) {
-	border: 1px solid hsl(0 0% 84%);
+	color: inherit;
+	text-decoration: inherit;
+	transition: color 0.3s ease;
 }
 
 .button {
-	--_bg: var(--surface3);
-	--_text: var(--text1);
-	--_border: transparent;
+	--bg: var(--bg-3);
+	--clr: var(--gray-0);
+	--border: var(--gray-6);
 
-	padding: var(--size-2) var(--size-4);
-	border: 1px solid var(--_border);
-	border-radius: var(--radius-3);
-	background: var(--_bg);
+	padding: var(--space-1) var(--space-2);
+	border: 1px solid var(--border);
+	border-radius: var(--round-1);
+	background: var(--bg);
 	box-shadow: var(--shadow-1);
-	color: var(--_text);
-	font-weight: var(--font-weight-6);
-	transition: all 0.3s ease;
+	color: var(--clr);
+	font-weight: var(--font-semibold);
+	text-decoration: none;
+	transition: background 0.3s ease, color 0.3s ease;
 
 	&:hover {
-		--_bg: var(--surface4);
+		--bg: var(--bg-4);
 	}
 
-	&.primary {
-		--_bg: var(--teal-0);
-		--_text: var(--teal-9);
-		--_border: var(--teal-1);
+	&[data-type='primary'] {
+		--bg: var(--green-1);
+		--clr: var(--green-9);
+		--border: var(--green-2);
 
 		&:hover {
-			--_bg: var(--teal-1);
+			--bg: var(--green-0);
 		}
 	}
 
-	&.secondary {
-		--_bg: none;
+	&[data-type='secondary'] {
+		--bg: transparent;
+		--border: transparent;
 
-		box-shadow: none;
 		text-decoration: underline;
+		text-decoration-thickness: 2px;
 		text-underline-offset: 6px;
 	}
 
-	&.danger {
-		--_bg: var(--red-0);
-		--_text: var(--red-9);
-		--_border: var(--red-1);
+	&[data-type='danger'] {
+		--bg: var(--red-1);
+		--clr: var(--red-9);
+		--border: var(--red-2);
 
 		&:hover {
-			--_bg: var(--red-1);
+			--bg: var(--red-0);
 		}
-	}
-}
-
-.editor {
-	padding: var(--size-6) var(--size-8);
-
-	& form {
-		display: grid;
-		justify-items: start;
-		gap: var(--size-6);
-	}
-
-	& :is(input, select, textarea) {
-		background: var(--surface3);
-	}
-
-	& label {
-		display: grid;
-		color: var(--text1);
-	}
-
-	& label span {
-		color: var(--text1);
-	}
-
-	& label:has(textarea) {
-		width: 100%;
-	}
-
-	& :is(input, select) {
-		margin-top: var(--size-2);
-		padding: var(--size-3);
-	}
-
-	& select {
-		text-transform: lowercase;
-	}
-
-	& textarea {
-		margin-top: var(--size-2);
-		padding: var(--size-3);
-	}
-
-	& .top {
-		display: flex;
-		justify-content: space-between;
-		width: 100%;
-	}
-
-	& .publishing {
-		display: flex;
-		gap: var(--size-3);
-
-		& input {
-			margin: 0;
-		}
-
-		& label {
-			display: flex;
-			align-items: center;
-			gap: var(--size-1);
-		}
-	}
-
-	& .publishing label span {
-		color: var(--text1);
-	}
-
-	& .actions {
-		margin-top: var(--size-3);
 	}
 }

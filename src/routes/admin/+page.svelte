@@ -1,22 +1,13 @@
 <section>
-	<h2>Editor</h2>
-	<p>You can create a post or edit an existing one.</p>
-	<a href="/admin/create" class="button primary">+Add post</a>
+	<h2 class="text-1">Editor</h2>
+	<p class="mt-1 text-4">You can create a post or edit an existing one.</p>
+	<a href="/admin/create" class="button inline-block mt-3" data-type="primary">
+		+Add post
+	</a>
 </section>
 
-<style>
+<style lang="postcss">
 	section {
-		display: grid;
-		align-content: start;
-		justify-items: start;
-		padding: var(--size-8);
-		gap: var(--size-2);
-	}
-
-	a {
-		--_color: var(--teal-8);
-
-		margin-top: var(--size-2);
-		text-decoration: none;
+		padding: var(--space-4);
 	}
 </style>
