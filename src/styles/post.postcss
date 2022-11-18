@@ -2,10 +2,10 @@
 	display: grid;
 	max-width: fit-content;
 	margin-inline: auto;
-	gap: var(--size-6);
+	gap: var(--space-3);
 
 	& :is(h1, h2) {
-		margin-top: var(--size-8);
+		margin-top: var(--space-5);
 		text-transform: capitalize;
 	}
 
@@ -15,20 +15,18 @@
 	}
 
 	& p {
-		color: var(--text3);
+		color: var(--text-3);
 	}
 
 	& pre {
 		max-width: 100%;
-		padding: var(--size-5);
-		border-radius: var(--radius-3);
-		background: var(--surface2);
-		color: var(--text1);
-		font-size: var(--font-size-2);
+		padding: var(--space-5);
+		border-radius: var(--round-1);
+		background: var(--bg-2);
+		color: var(--text-1);
+		font-size: var(--fs-2);
 	}
 }
-
-/* todo: tokenize values */
 
 .hljs-comment,
 .hljs-quote {

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { formatDate } from '$lib/utils'
-	import type { PostWithCategories } from '$lib/types'
+	import type { PostWithCategory } from '$lib/types'
 
-	export let post: PostWithCategories
+	export let post: PostWithCategory
 </script>
 
 <a href={post.slug}>
@@ -11,10 +11,10 @@
 			<img src={post.image} alt={post.title} />
 		</div>
 
-		<div class="space mt-3">
+		<div class="space-items mt-3">
 			<div class="brand lowercase">{post.category.name}</div>
-			<h2 class="size-4 font-bold capitalize">{post.title}</h2>
-			<p class="text-4 lines-4">{post.description}</p>
+			<h2 class="fs-2 font-bold capitalize">{post.title}</h2>
+			<p class="text-4 line-clamp-4">{post.description}</p>
 			<time class="block">{formatDate(post.createdAt)}</time>
 		</div>
 	</article>
@@ -23,11 +23,11 @@
 <style lang="postcss">
 	.scale {
 		overflow: hidden;
-		border-radius: var(--radius-3);
+		border-radius: var(--round-1);
 
 		&:hover {
 			outline: 2px solid var(--brand);
-			outline-offset: var(--size-2);
+			outline-offset: var(--space-2);
 		}
 
 		&:hover img {

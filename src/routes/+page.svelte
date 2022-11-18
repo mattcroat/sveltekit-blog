@@ -8,12 +8,27 @@
 	$: ({ featured, posts } = data)
 </script>
 
-<div class="container mt-5">
-	<FeaturedPost post={featured} />
+<div class="container">
+	<div class="featured mt-4">
+		<FeaturedPost post={featured} />
+	</div>
 
-	<div class="grid grid-cols-posts mt-5" style:--gap="var(--spacing5)">
+	<div class="posts grid mt-5">
 		{#each posts as post}
 			<Post {post} />
 		{/each}
 	</div>
 </div>
+
+<style lang="postcss">
+	.featured {
+		@media (--md) {
+			margin-top: var(--space-6);
+		}
+	}
+
+	.posts {
+		--gap: var(--space-5);
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	}
+</style>

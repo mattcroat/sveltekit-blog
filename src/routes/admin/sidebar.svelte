@@ -7,12 +7,15 @@
 	export let posts: Post[]
 </script>
 
-<aside>
-	<h4>Posts</h4>
+<aside class="bg-3">
+	<h4 class="text-1">Posts</h4>
 
-	<nav>
+	<nav class="mt-2 space-items">
 		{#each posts as post}
-			<a href="/admin/edit/{post.slug}">
+			<a
+				href="/admin/edit/{post.slug}"
+				class="post block capitalize round-1 shadow-1 overflow-hidden ellipsis"
+			>
 				{post.title}
 			</a>
 		{/each}
@@ -21,35 +24,28 @@
 
 <style lang="postcss">
 	aside {
-		padding: var(--size-6);
-		border-right: 1px solid hsl(0 0% 24%);
+		padding: var(--space-4);
+	}
+
+	.post {
+		--bg: hsl(210 9% 36%);
+		--border: hsl(210 9% 40%);
+
+		padding: var(--space-2);
+		border: 1px solid var(--border);
+		background: var(--bg);
+		transition: background 0.3s ease;
+
+		&:hover {
+			--bg: hsl(210 9% 38%);
+		}
 
 		@nest :global([data-theme='light']) & {
-			border-right: 1px solid hsl(0 0% 90%);
-		}
+			--bg: hsl(210 16% 94%);
+			--border: hsl(210 16% 90%);
 
-		& nav {
-			display: grid;
-			margin-top: var(--size-3);
-			gap: var(--size-3);
-		}
-
-		& a {
-			--_color: var(--text2);
-
-			padding: var(--size-3);
-			overflow: hidden;
-			border: 1px solid hsl(0 0% 34%);
-			border-radius: var(--radius-3);
-			background: var(--surface3);
-			box-shadow: var(--shadow-1);
-			text-decoration: none;
-			text-overflow: ellipsis;
-			text-transform: capitalize;
-			white-space: nowrap;
-
-			@nest :global([data-theme='light']) & {
-				border: 1px solid hsl(0 0% 84%);
+			&:hover {
+				--bg: hsl(210 16% 96%);
 			}
 		}
 	}

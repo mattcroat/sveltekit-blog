@@ -8,7 +8,7 @@
 	<title>Sveltr</title>
 </svelte:head>
 
-<div class="layout">
+<div>
 	<Navigation />
 	<slot />
 </div>
