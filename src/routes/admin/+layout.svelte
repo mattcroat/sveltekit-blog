@@ -8,17 +8,9 @@
 	$: ({ posts } = data)
 </script>
 
-<div class="container">
-	<main class="grid mt-6 bg-2 shadow-2 round-1 overflow-hidden">
+<div class="sm:max-w-screen-xl sm:mx-auto px-8 mt-12">
+	<main class="flex bg-neutral-800 rounded-2xl overflow-hidden">
 		<Sidebar {posts} />
 		<slot />
 	</main>
 </div>
-
-<style lang="postcss">
-	main {
-		@media (--md) {
-			grid-template-columns: 28% 1fr;
-		}
-	}
-</style>

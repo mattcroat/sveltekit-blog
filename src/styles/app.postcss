@@ -1,5 +1,21 @@
-@import 'variables.postcss';
-@import 'utils.postcss';
-@import 'media.postcss';
-@import 'global.postcss';
-@import 'post.postcss';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	outline: 1px solid hsl(0 0% 14%);
+}
+
+.grid-cols-posts {
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.line-clamp-4 {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 4;
+}

@@ -123,7 +123,7 @@
 		</div>
 	</form>
 </section>
-
+<!-- 
 <style lang="postcss">
 	section {
 		padding: var(--space-4);
@@ -153,4 +153,4 @@
 			width: 100%;
 		}
 	}
-</style>
+</style> -->
