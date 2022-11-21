@@ -7,25 +7,24 @@
 	$: ({ categories, post } = data)
 </script>
 
-<section>
+<section class="w-full p-8">
 	<form method="POST" action="?/save" use:enhance>
 		<div class="flex justify-between">
-			<p class="fs-3 font-semibold">Editing</p>
+			<p class="text-2xl font-semibold">Editing</p>
 			<button
+				class="inline-block px-4 py-2 font-semibold text-white bg-red-700 rounded-2xl hover:bg-red-600 transition-colors"
 				formaction="?/delete"
-				class="button"
-				data-type="danger"
 				type="submit"
 			>
 				Delete
 			</button>
 		</div>
 
-		<div class="space-items mt-3">
-			<label class="block">
-				<p>Slug</p>
+		<div class="grid gap-6 mt-6">
+			<label>
+				<span class="block">Slug</span>
 				<input
-					class="mt-1"
+					class="mt-2 p-4 bg-neutral-700 rounded-2xl border border-neutral-600"
 					type="text"
 					name="slug"
 					value={post.slug}
@@ -33,10 +32,10 @@
 				/>
 			</label>
 
-			<label class="block">
-				<p>Title</p>
+			<label>
+				<span class="block">Title</span>
 				<input
-					class="mt-1"
+					class="mt-2 p-4 bg-neutral-700 rounded-2xl border border-neutral-600"
 					type="text"
 					name="title"
 					value={post.title}
@@ -44,10 +43,10 @@
 				/>
 			</label>
 
-			<label class="block">
-				<p>Image</p>
+			<label>
+				<span class="block">Image</span>
 				<input
-					class="mt-1"
+					class="mt-2 p-4 bg-neutral-700 rounded-2xl border border-neutral-600"
 					type="text"
 					name="image"
 					value={post.image}
@@ -55,10 +54,10 @@
 				/>
 			</label>
 
-			<label class="block">
-				<p>Description</p>
+			<label>
+				<span class="block">Description</span>
 				<input
-					class="mt-1"
+					class="mt-2 p-4 bg-neutral-700 rounded-2xl border border-neutral-600"
 					type="text"
 					name="description"
 					value={post.description}
@@ -66,9 +65,13 @@
 				/>
 			</label>
 
-			<label class="block">
-				<p>Category</p>
-				<select class="mt-1" name="category" required>
+			<label>
+				<span class="block">Category</span>
+				<select
+					class="mt-2 p-4 bg-neutral-700 rounded-2xl border border-neutral-600"
+					name="category"
+					required
+				>
 					{#each categories as category}
 						{@const selected = category.name === post.category.name}
 						<option value={category.name} {selected}>{category.name}</option>
@@ -76,18 +79,18 @@
 				</select>
 			</label>
 
-			<label class="block">
-				<p>Markdown</p>
+			<label>
+				<span class="block">Markdown</span>
 				<textarea
-					class="mt-1"
+					class="w-full mt-2 p-4 bg-neutral-700 rounded-2xl border border-neutral-600"
 					name="markdown"
 					rows="10"
 					value={post.markdown}
 				/>
 			</label>
 
-			<div class="flex">
-				<label class="flex items-center">
+			<div class="flex gap-4 -mt-4">
+				<label>
 					<input
 						type="checkbox"
 						name="published"
@@ -97,7 +100,7 @@
 					<span>Published</span>
 				</label>
 
-				<label class="flex items-center">
+				<label>
 					<input
 						type="checkbox"
 						name="featured"
@@ -108,11 +111,13 @@
 				</label>
 			</div>
 
-			<div class="mt-5">
-				<button class="button" data-type="primary" type="submit">Save</button>
+			<div class="flex gap-4">
+				<button
+					class="inline-block px-4 py-2 font-semibold text-white bg-green-600 rounded-2xl hover:bg-green-500 transition-colors"
+					type="submit">Save</button
+				>
 				<a
-					class="button"
-					data-type="secondary"
+					class="py-2 font-semibold text-gray-200 underline decoration-2 underline-offset-8 hover:text-gray-50 transition-colors"
 					href="/{post.slug}?preview"
 					target="_blank"
 					rel="noreferrer"
@@ -123,34 +128,3 @@
 		</div>
 	</form>
 </section>
-<!-- 
-<style lang="postcss">
-	section {
-		padding: var(--space-4);
-	}
-
-	form {
-		& label:has(input[type='checkbox']) {
-			--gap: var(--space-1);
-		}
-
-		& :is(input, select, textarea) {
-			--bg: hsl(210 10% 28%);
-			--border: hsl(210 10% 32%);
-
-			padding: var(--space-2);
-			border: 1px solid var(--border);
-			border-radius: var(--round-1);
-			background: var(--bg);
-
-			@nest [data-theme='light'] & {
-				--bg: hsl(210 17% 94%);
-				--border: hsl(210 17% 90%);
-			}
-		}
-
-		& textarea {
-			width: 100%;
-		}
-	}
-</style> -->

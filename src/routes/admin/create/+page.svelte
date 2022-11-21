@@ -7,31 +7,50 @@
 	$: ({ categories } = data)
 </script>
 
-<section class="p-8">
+<section class="p-8 w-full">
 	<form method="POST" action="?/create" use:enhance>
 		<div>
-			<p class="font-semibold">Creating</p>
+			<p class="text-2xl font-semibold">Creating</p>
 		</div>
 
-		<div>
+		<div class="grid gap-6 mt-6">
 			<label>
-				<p>Slug</p>
-				<input type="text" name="slug" placeholder="post-slug" required />
-			</label>
-
-			<label>
-				<p>Title</p>
-				<input type="text" name="title" placeholder="Post title" required />
-			</label>
-
-			<label>
-				<p>Image</p>
-				<input type="text" name="image" placeholder="Unsplash image" required />
-			</label>
-
-			<label>
-				<p>Description</p>
+				<span class="block">Slug</span>
 				<input
+					class="mt-2 p-4 bg-neutral-700 rounded-2xl border border-neutral-600"
+					type="text"
+					name="slug"
+					placeholder="post-slug"
+					required
+				/>
+			</label>
+
+			<label>
+				<span class="block">Title</span>
+				<input
+					class="mt-2 p-4 bg-neutral-700 rounded-2xl border border-neutral-600"
+					type="text"
+					name="title"
+					placeholder="Post title"
+					required
+				/>
+			</label>
+
+			<label>
+				<span class="block">Image</span>
+				<input
+					class="mt-2 p-4 bg-neutral-700 rounded-2xl border border-neutral-600"
+					type="text"
+					name="image"
+					placeholder="Unsplash image"
+					required
+				/>
+			</label>
+
+			<label>
+				<span class="block">Description</span>
+				<input
+					class="mt-2 p-4 bg-neutral-700 rounded-2xl border border-neutral-600"
 					type="text"
 					name="description"
 					placeholder="Post description"
@@ -40,8 +59,12 @@
 			</label>
 
 			<label>
-				<p>Category</p>
-				<select name="category" required>
+				<span class="block">Category</span>
+				<select
+					class="mt-2 p-4 bg-neutral-700 rounded-2xl border border-neutral-600"
+					name="category"
+					required
+				>
 					{#each categories as category}
 						<option value={category.name}>{category.name}</option>
 					{/each}
@@ -49,11 +72,15 @@
 			</label>
 
 			<label>
-				<p>Markdown</p>
-				<textarea name="markdown" rows="10" />
+				<span class="block">Markdown</span>
+				<textarea
+					class="w-full mt-2 p-4 bg-neutral-700 rounded-2xl border border-neutral-600"
+					name="markdown"
+					rows="10"
+				/>
 			</label>
 
-			<div>
+			<div class="flex gap-4 -mt-4">
 				<label>
 					<input type="checkbox" name="published" />
 					<span>Published</span>
@@ -66,7 +93,12 @@
 			</div>
 
 			<div>
-				<button type="submit">Save</button>
+				<button
+					class="inline-block px-4 py-2 font-semibold text-white bg-green-600 rounded-2xl hover:bg-green-500 transition-colors"
+					type="submit"
+				>
+					Save
+				</button>
 			</div>
 		</div>
 	</form>
