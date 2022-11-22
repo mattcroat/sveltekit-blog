@@ -7,14 +7,14 @@
 	export let posts: Post[]
 </script>
 
-<aside class="w-60 p-8 border-r-2 border-r-neutral-900">
+<aside class="w-96 p-8 bg-neutral-900/40">
 	<h4 class="text-2xl font-semibold">Posts</h4>
 
 	<nav class="grid gap-4 mt-6">
 		{#each posts as post}
 			<a
 				href="/admin/edit/{post.slug}"
-				class="p-4 bg-neutral-700 border border-neutral-600 rounded-2xl capitalize overflow-hidden text-ellipsis"
+				class="p-4 text-neutral-400 bg-neutral-800/50 border border-neutral-700/20 rounded-2xl capitalize overflow-hidden text-ellipsis hover:text-white hover:bg-neutral-800/50 transition-colors"
 			>
 				{post.title}
 			</a>

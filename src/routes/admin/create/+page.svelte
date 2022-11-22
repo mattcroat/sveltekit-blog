@@ -7,7 +7,7 @@
 	$: ({ categories } = data)
 </script>
 
-<section class="p-8 w-full">
+<section class="w-full p-8">
 	<form method="POST" action="?/create" use:enhance>
 		<div>
 			<p class="text-2xl font-semibold">Creating</p>
@@ -17,7 +17,7 @@
 			<label>
 				<span class="block">Slug</span>
 				<input
-					class="mt-2 p-4 bg-neutral-700 rounded-2xl border border-neutral-600"
+					class="mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30"
 					type="text"
 					name="slug"
 					placeholder="post-slug"
@@ -28,7 +28,7 @@
 			<label>
 				<span class="block">Title</span>
 				<input
-					class="mt-2 p-4 bg-neutral-700 rounded-2xl border border-neutral-600"
+					class="mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30"
 					type="text"
 					name="title"
 					placeholder="Post title"
@@ -39,7 +39,7 @@
 			<label>
 				<span class="block">Image</span>
 				<input
-					class="mt-2 p-4 bg-neutral-700 rounded-2xl border border-neutral-600"
+					class="mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30"
 					type="text"
 					name="image"
 					placeholder="Unsplash image"
@@ -50,7 +50,7 @@
 			<label>
 				<span class="block">Description</span>
 				<input
-					class="mt-2 p-4 bg-neutral-700 rounded-2xl border border-neutral-600"
+					class="mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30"
 					type="text"
 					name="description"
 					placeholder="Post description"
@@ -61,7 +61,7 @@
 			<label>
 				<span class="block">Category</span>
 				<select
-					class="mt-2 p-4 bg-neutral-700 rounded-2xl border border-neutral-600"
+					class="mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30"
 					name="category"
 					required
 				>
@@ -74,7 +74,7 @@
 			<label>
 				<span class="block">Markdown</span>
 				<textarea
-					class="w-full mt-2 p-4 bg-neutral-700 rounded-2xl border border-neutral-600"
+					class="w-full mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30"
 					name="markdown"
 					rows="10"
 				/>
@@ -83,18 +83,18 @@
 			<div class="flex gap-4 -mt-4">
 				<label>
 					<input type="checkbox" name="published" />
-					<span>Published</span>
+					<span class="font-semibold">Published</span>
 				</label>
 
 				<label>
 					<input type="checkbox" name="featured" />
-					<span>Featured</span>
+					<span class="font-semibold">Featured</span>
 				</label>
 			</div>
 
-			<div>
+			<div class="mt-8">
 				<button
-					class="inline-block px-4 py-2 font-semibold text-white bg-green-600 rounded-2xl hover:bg-green-500 transition-colors"
+					class="inline-block px-4 py-2 font-semibold text-green-900 bg-green-300 rounded-2xl hover:bg-green-200 transition-colors"
 					type="submit"
 				>
 					Save

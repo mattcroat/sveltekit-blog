@@ -9,7 +9,9 @@
 </script>
 
 <div class="sm:max-w-screen-xl sm:mx-auto px-8 mt-12">
-	<main class="flex bg-neutral-800 rounded-2xl overflow-hidden">
+	<main
+		class="flex bg-neutral-800 rounded-2xl overflow-hidden border border-neutral-800"
+	>
 		<Sidebar {posts} />
 		<slot />
 	</main>
