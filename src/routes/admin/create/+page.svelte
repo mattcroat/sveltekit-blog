@@ -3,8 +3,16 @@
 	import type { PageServerData } from './$types'
 
 	export let data: PageServerData
+	export let form: FormData
 
 	$: ({ categories } = data)
+
+	// $: console.log(form)
+
+	// let isError = false
+	// const hasError = isError && 'border-red-400'
+	const field = `mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30 focus:border-red-400 focus:ring-red-400`
+	const error = 'absolute -bottom-6 left-0 text-red-400'
 </script>
 
 <section class="w-full p-8">
@@ -13,82 +21,101 @@
 			<p class="text-2xl font-semibold">Creating</p>
 		</div>
 
-		<div class="grid gap-6 mt-6">
-			<label>
+		<div class="grid gap-8 mt-6">
+			<label class="relative">
 				<span class="block">Slug</span>
+
 				<input
-					class="mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30"
+					class={field}
 					type="text"
 					name="slug"
 					placeholder="post-slug"
 					required
 				/>
+
+				{#if form?.errors?.slug}
+					<span class={error}>{form?.errors?.slug[0]}</span>
+				{/if}
 			</label>
 
-			<label>
+			<label class="relative">
 				<span class="block">Title</span>
+
 				<input
-					class="mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30"
+					class={field}
 					type="text"
 					name="title"
 					placeholder="Post title"
 					required
 				/>
+
+				{#if form?.errors?.title}
+					<span class={error}>{form?.errors?.title[0]}</span>
+				{/if}
 			</label>
 
-			<label>
+			<label class="relative">
 				<span class="block">Image</span>
+
 				<input
-					class="mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30"
+					class={field}
 					type="text"
 					name="image"
 					placeholder="Unsplash image"
 					required
 				/>
+
+				{#if form?.errors?.image}
+					<span class={error}>{form?.errors?.image[0]}</span>
+				{/if}
 			</label>
 
-			<label>
+			<label class="relative">
 				<span class="block">Description</span>
+
 				<input
-					class="mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30"
+					class={field}
 					type="text"
 					name="description"
 					placeholder="Post description"
 					required
 				/>
+
+				{#if form?.errors?.description}
+					<span class={error}>{form?.errors?.description[0]}</span>
+				{/if}
 			</label>
 
-			<label>
+			<label class="relative">
 				<span class="block">Category</span>
-				<select
-					class="mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30"
-					name="category"
-					required
-				>
+
+				<select class={field} name="category" required>
 					{#each categories as category}
 						<option value={category.name}>{category.name}</option>
 					{/each}
 				</select>
+
+				{#if form?.errors?.category}
+					<span class={error}>{form?.errors?.category[0]}</span>
+				{/if}
 			</label>
 
-			<label>
+			<label class="relative">
 				<span class="block">Markdown</span>
-				<textarea
-					class="w-full mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30"
-					name="markdown"
-					rows="10"
-				/>
+				<textarea class="w-full {field}" name="markdown" rows="10" />
 			</label>
 
 			<div class="flex gap-4 -mt-4">
 				<label>
+					<input type="hidden" name="published" />
 					<input type="checkbox" name="published" />
-					<span class="font-semibold">Published</span>
+					<span>Published</span>
 				</label>
 
 				<label>
+					<input type="hidden" name="featured" />
 					<input type="checkbox" name="featured" />
-					<span class="font-semibold">Featured</span>
+					<span>Featured</span>
 				</label>
 			</div>
 

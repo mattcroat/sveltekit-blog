@@ -5,17 +5,19 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-	/* outline: 1px solid hsl(0 0% 20%); */
-}
+/* * {
+	outline: 1px solid hsl(0 0% 20%);
+} */
 
-.grid-cols-posts {
-	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-}
+@layer utilities {
+	.grid-cols-posts {
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	}
 
-.line-clamp-4 {
-	overflow: hidden;
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 4;
+	.line-clamp-4 {
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 4;
+	}
 }

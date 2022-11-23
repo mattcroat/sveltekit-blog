@@ -5,6 +5,8 @@
 	export let data: PageServerData
 
 	$: ({ categories, post } = data)
+
+	let error = true
 </script>
 
 <section class="w-full p-8">
@@ -97,7 +99,7 @@
 						checked={post.published}
 						value={post.published}
 					/>
-					<span class="font-semibold">Published</span>
+					<span>Published</span>
 				</label>
 
 				<label>
@@ -107,7 +109,7 @@
 						checked={post.featured}
 						value={post.featured}
 					/>
-					<span class="font-semibold">Featured</span>
+					<span>Featured</span>
 				</label>
 			</div>
 
