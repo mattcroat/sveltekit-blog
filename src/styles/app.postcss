@@ -5,13 +5,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* * {
-	outline: 1px solid hsl(0 0% 20%);
-} */
+* {
+	outline: 1px solid hsl(0 0% 18%);
+}
 
 @layer utilities {
 	.grid-cols-posts {
 		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	}
+
+	.grid-cols-editor {
+		grid-template-columns: 28% 1fr;
 	}
 
 	.line-clamp-4 {

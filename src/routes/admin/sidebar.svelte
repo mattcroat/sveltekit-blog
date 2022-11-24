@@ -7,7 +7,7 @@
 	export let posts: Post[]
 </script>
 
-<aside class="w-96 p-8 bg-neutral-900/40">
+<aside>
 	<h4 class="text-2xl font-semibold">Posts</h4>
 
 	<nav class="grid gap-4 mt-6">

@@ -1,18 +1,16 @@
 <script lang="ts">
 	import { enhance } from '$app/forms'
-	import type { PageServerData } from './$types'
+	import type { ActionData, PageServerData } from './$types'
 
 	export let data: PageServerData
-	export let form: FormData
+	export let form: ActionData
 
 	$: ({ categories } = data)
 
-	// $: console.log(form)
-
-	// let isError = false
-	// const hasError = isError && 'border-red-400'
-	const field = `mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30 focus:border-red-400 focus:ring-red-400`
-	const error = 'absolute -bottom-6 left-0 text-red-400'
+	const field = `mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30 focus:border-red-400 focus:ring-red-400 ${
+		form?.errors?.slug && 'border border-red-400'
+	}`
+	const error = 'block mt-2 text-red-400'
 </script>
 
 <section class="w-full p-8">
@@ -21,7 +19,7 @@
 			<p class="text-2xl font-semibold">Creating</p>
 		</div>
 
-		<div class="grid gap-8 mt-6">
+		<div class="grid gap-6 mt-6">
 			<label class="relative">
 				<span class="block">Slug</span>
 
@@ -34,7 +32,9 @@
 				/>
 
 				{#if form?.errors?.slug}
-					<span class={error}>{form?.errors?.slug[0]}</span>
+					<span class={error}>
+						{form?.errors?.slug[0]}
+					</span>
 				{/if}
 			</label>
 
@@ -50,7 +50,9 @@
 				/>
 
 				{#if form?.errors?.title}
-					<span class={error}>{form?.errors?.title[0]}</span>
+					<span class={error}>
+						{form?.errors?.title[0]}
+					</span>
 				{/if}
 			</label>
 
@@ -66,7 +68,9 @@
 				/>
 
 				{#if form?.errors?.image}
-					<span class={error}>{form?.errors?.image[0]}</span>
+					<span class={error}>
+						{form?.errors?.image[0]}
+					</span>
 				{/if}
 			</label>
 
@@ -82,7 +86,9 @@
 				/>
 
 				{#if form?.errors?.description}
-					<span class={error}>{form?.errors?.description[0]}</span>
+					<span class={error}>
+						{form?.errors?.description[0]}
+					</span>
 				{/if}
 			</label>
 
@@ -96,7 +102,9 @@
 				</select>
 
 				{#if form?.errors?.category}
-					<span class={error}>{form?.errors?.category[0]}</span>
+					<span class={error}>
+						{form?.errors?.category[0]}
+					</span>
 				{/if}
 			</label>
 
