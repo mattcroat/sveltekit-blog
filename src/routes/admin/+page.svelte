@@ -1,6 +1,6 @@
 <section class="p-8 space-y-6">
 	<h2 class="text-2xl font-semibold">Editor</h2>
-	<p class="text-lg text-gray-400">
+	<p class="text-lg text-gray-500 dark:text-gray-400">
 		You can create a post or edit an existing one.
 	</p>
 	<a

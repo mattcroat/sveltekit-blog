@@ -14,7 +14,7 @@
 		{#each posts as post}
 			<a
 				href="/admin/edit/{post.slug}"
-				class="p-4 text-neutral-400 bg-neutral-800/50 border border-neutral-700/20 rounded-2xl capitalize overflow-hidden text-ellipsis hover:text-white hover:bg-neutral-800/50 transition-colors"
+				class="p-4 text-neutral-500 dark:text-neutral-400 bg-neutral-200/50 dark:bg-neutral-800/50 border border-neutral-200/60 dark:border-neutral-700/20 rounded-2xl capitalize overflow-hidden text-ellipsis hover:text-black dark:hover:text-white transition-colors"
 			>
 				{post.title}
 			</a>

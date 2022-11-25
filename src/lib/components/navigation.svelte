@@ -16,10 +16,10 @@
 			<a class="text-xl font-semibold uppercase" href="/">Sveltr</a>
 		</div>
 
-		<div class="grid gap-8 mt-6 sm:grid-flow-col sm:mt-0">
+		<div class="grid sm:grid-flow-col gap-8 mt-6 sm:mt-0">
 			{#each links as link}
 				<a
-					class="hover:text-red-400 hover:decoration-2 hover:underline hover:underline-offset-8 transition-colors"
+					class="hover:text-red-600 dark:hover:text-red-400 hover:decoration-2 hover:underline hover:underline-offset-8 transition-colors"
 					href={link.href}
 				>
 					{link.text}

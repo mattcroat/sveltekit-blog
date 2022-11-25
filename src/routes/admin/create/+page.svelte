@@ -7,14 +7,6 @@
 
 	$: ({ categories } = data)
 	$: errors = form?.errors
-
-	const field = `w-80 mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30 focus:border-red-400 focus:ring-red-400 ${
-		errors?.slug && 'border border-red-400'
-	}`
-	const markdown = `w-full mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30 focus:border-red-400 focus:ring-red-400 ${
-		errors?.slug && 'border border-red-400'
-	}`
-	const error = 'block mt-2 text-red-400'
 </script>
 
 <section class="p-8">
@@ -28,7 +20,8 @@
 				<span class="block">Slug</span>
 
 				<input
-					class={field}
+					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.slug &&
+						'border-red-600 dark:border-red-400'}"
 					type="text"
 					name="slug"
 					placeholder="post-slug"
@@ -36,7 +29,7 @@
 				/>
 
 				{#if errors?.slug}
-					<span class={error}>
+					<span class="block mt-2 text-red-600 dark:text-red-400">
 						{errors?.slug[0]}
 					</span>
 				{/if}
@@ -46,7 +39,8 @@
 				<span class="block">Title</span>
 
 				<input
-					class={field}
+					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.title &&
+						'border-red-600 dark:border-red-400'}"
 					type="text"
 					name="title"
 					placeholder="Post title"
@@ -54,7 +48,7 @@
 				/>
 
 				{#if errors?.title}
-					<span class={error}>
+					<span class="block mt-2 text-red-600 dark:text-red-400">
 						{errors?.title[0]}
 					</span>
 				{/if}
@@ -64,7 +58,8 @@
 				<span class="block">Image</span>
 
 				<input
-					class={field}
+					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.image &&
+						'border-red-600 dark:border-red-400'}"
 					type="text"
 					name="image"
 					placeholder="Unsplash image"
@@ -72,7 +67,7 @@
 				/>
 
 				{#if errors?.image}
-					<span class={error}>
+					<span class="block mt-2 text-red-600 dark:text-red-400">
 						{errors?.image[0]}
 					</span>
 				{/if}
@@ -82,7 +77,8 @@
 				<span class="block">Description</span>
 
 				<input
-					class={field}
+					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.description &&
+						'border-red-600 dark:border-red-400'}"
 					type="text"
 					name="description"
 					placeholder="Post description"
@@ -90,7 +86,7 @@
 				/>
 
 				{#if errors?.description}
-					<span class={error}>
+					<span class="block mt-2 text-red-600 dark:text-red-400">
 						{errors?.description[0]}
 					</span>
 				{/if}
@@ -99,14 +95,19 @@
 			<label>
 				<span class="block">Category</span>
 
-				<select class={field} name="category" required>
+				<select
+					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.category &&
+						'border-red-600 dark:border-red-400'}"
+					name="category"
+					required
+				>
 					{#each categories as category}
 						<option value={category.name}>{category.name}</option>
 					{/each}
 				</select>
 
 				{#if errors?.category}
-					<span class={error}>
+					<span class="block mt-2 text-red-600 dark:text-red-400">
 						{errors?.category[0]}
 					</span>
 				{/if}
@@ -114,7 +115,12 @@
 
 			<label>
 				<span class="block">Markdown</span>
-				<textarea class={markdown} name="markdown" rows="10" />
+				<textarea
+					class="w-full mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.markdown &&
+						'border-red-600 dark:border-red-400'}"
+					name="markdown"
+					rows="10"
+				/>
 			</label>
 
 			<div class="flex gap-4 -mt-4">

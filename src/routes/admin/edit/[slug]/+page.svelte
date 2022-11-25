@@ -7,14 +7,6 @@
 
 	$: ({ categories, post } = data)
 	$: errors = form?.errors
-
-	const field = `w-80 mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30 focus:border-red-400 focus:ring-red-400 ${
-		errors?.slug && 'border border-red-400'
-	}`
-	const markdown = `w-full mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30 focus:border-red-400 focus:ring-red-400 ${
-		errors?.slug && 'border border-red-400'
-	}`
-	const error = 'block mt-2 text-red-400'
 </script>
 
 <section class="p-8">
@@ -35,7 +27,8 @@
 				<span class="block">Slug</span>
 
 				<input
-					class={field}
+					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.slug &&
+						'border-red-600 dark:border-red-400'}"
 					type="text"
 					name="slug"
 					value={post.slug}
@@ -43,7 +36,7 @@
 				/>
 
 				{#if errors?.slug}
-					<span class={error}>
+					<span class="block mt-2 text-red-600 dark:text-red-400">
 						{errors?.slug[0]}
 					</span>
 				{/if}
@@ -53,7 +46,8 @@
 				<span class="block">Title</span>
 
 				<input
-					class={field}
+					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.title &&
+						'border-red-600 dark:border-red-400'}"
 					type="text"
 					name="title"
 					value={post.title}
@@ -61,7 +55,7 @@
 				/>
 
 				{#if errors?.title}
-					<span class={error}>
+					<span class="block mt-2 text-red-600 dark:text-red-400">
 						{errors?.title[0]}
 					</span>
 				{/if}
@@ -71,7 +65,8 @@
 				<span class="block">Image</span>
 
 				<input
-					class={field}
+					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.image &&
+						'border-red-600 dark:border-red-400'}"
 					type="text"
 					name="image"
 					value={post.image}
@@ -79,7 +74,7 @@
 				/>
 
 				{#if errors?.image}
-					<span class={error}>
+					<span class="block mt-2 text-red-600 dark:text-red-400">
 						{errors?.image[0]}
 					</span>
 				{/if}
@@ -89,7 +84,8 @@
 				<span class="block">Description</span>
 
 				<input
-					class={field}
+					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.description &&
+						'border-red-600 dark:border-red-400'}"
 					type="text"
 					name="description"
 					value={post.description}
@@ -97,7 +93,7 @@
 				/>
 
 				{#if errors?.description}
-					<span class={error}>
+					<span class="block mt-2 text-red-600 dark:text-red-400">
 						{errors?.description[0]}
 					</span>
 				{/if}
@@ -106,7 +102,12 @@
 			<label>
 				<span class="block">Category</span>
 
-				<select class={field} name="category" required>
+				<select
+					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.category &&
+						'border-red-600 dark:border-red-400'}"
+					name="category"
+					required
+				>
 					{#each categories as category}
 						{@const selected = category.name === post.category.name}
 						<option value={category.name} {selected}>{category.name}</option>
@@ -114,7 +115,7 @@
 				</select>
 
 				{#if errors?.category}
-					<span class={error}>
+					<span class="block mt-2 text-red-600 dark:text-red-400">
 						{errors?.category[0]}
 					</span>
 				{/if}
@@ -123,7 +124,8 @@
 			<label>
 				<span class="block">Markdown</span>
 				<textarea
-					class={markdown}
+					class="w-full mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.markdown &&
+						'border-red-600 dark:border-red-400'}"
 					name="markdown"
 					rows="10"
 					value={post.markdown}
@@ -161,8 +163,9 @@
 				>
 					Save
 				</button>
+
 				<a
-					class="py-2 font-semibold text-gray-200 underline underline-offset-8 hover:text-gray-50 transition-colors"
+					class="py-2 font-semibold text-gray-900 dark:text-gray-200 underline underline-offset-8 transition-colors"
 					href="/{post.slug}?preview"
 					target="_blank"
 					rel="noreferrer"

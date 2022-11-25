@@ -1,6 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 const config = {
+	darkMode: ['class', '[data-theme="dark"]'],
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		fontFamily: {
