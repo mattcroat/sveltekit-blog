@@ -10,7 +10,7 @@
 	]
 </script>
 
-<nav class="sm:max-w-screen-xl sm:mx-auto px-8 mt-12">
+<nav>
 	<div class="sm:flex sm:justify-between sm:items-center">
 		<div>
 			<a class="text-xl font-semibold uppercase" href="/">Sveltr</a>

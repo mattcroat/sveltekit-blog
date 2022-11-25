@@ -10,7 +10,7 @@
 
 <div class="sm:max-w-screen-xl sm:mx-auto px-8 mt-12">
 	<main
-		class="grid grid-cols-editor bg-neutral-800 rounded-2xl overflow-hidden border border-neutral-800"
+		class="bg-neutral-800 rounded-2xl overflow-hidden border border-neutral-800 md:grid md:grid-cols-editor"
 	>
 		<div class="p-8 bg-neutral-900/40">
 			<Sidebar {posts} />

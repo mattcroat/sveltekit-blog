@@ -11,7 +11,7 @@
 			class="rounded-2xl overflow-hidden group-hover:outline-red-400 group-hover:outline-2 group-hover:outline-offset-8"
 		>
 			<img
-				class="w-full h-full object-cover aspect-[1/1.3] rounded-2xl group-hover:scale-125 transition-transform"
+				class="w-full h-full object-cover aspect-[16/9] rounded-2xl group-hover:scale-125 transition-transform md:aspect-[1/1.3]"
 				src={post.image}
 				alt={post.title}
 			/>

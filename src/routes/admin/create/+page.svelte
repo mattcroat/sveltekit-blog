@@ -8,20 +8,23 @@
 	$: ({ categories } = data)
 	$: errors = form?.errors
 
-	const field = `mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30 focus:border-red-400 focus:ring-red-400 ${
+	const field = `w-80 mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30 focus:border-red-400 focus:ring-red-400 ${
+		errors?.slug && 'border border-red-400'
+	}`
+	const markdown = `w-full mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30 focus:border-red-400 focus:ring-red-400 ${
 		errors?.slug && 'border border-red-400'
 	}`
 	const error = 'block mt-2 text-red-400'
 </script>
 
-<section class="w-full p-8">
+<section class="p-8">
 	<form method="POST" action="?/create" autocomplete="off" use:enhance>
 		<div>
 			<p class="text-2xl font-semibold">Creating</p>
 		</div>
 
 		<div class="grid gap-6 mt-6">
-			<label class="relative">
+			<label>
 				<span class="block">Slug</span>
 
 				<input
@@ -39,7 +42,7 @@
 				{/if}
 			</label>
 
-			<label class="relative">
+			<label>
 				<span class="block">Title</span>
 
 				<input
@@ -57,7 +60,7 @@
 				{/if}
 			</label>
 
-			<label class="relative">
+			<label>
 				<span class="block">Image</span>
 
 				<input
@@ -75,7 +78,7 @@
 				{/if}
 			</label>
 
-			<label class="relative">
+			<label>
 				<span class="block">Description</span>
 
 				<input
@@ -93,7 +96,7 @@
 				{/if}
 			</label>
 
-			<label class="relative">
+			<label>
 				<span class="block">Category</span>
 
 				<select class={field} name="category" required>
@@ -109,9 +112,9 @@
 				{/if}
 			</label>
 
-			<label class="relative">
+			<label>
 				<span class="block">Markdown</span>
-				<textarea class="w-full {field}" name="markdown" rows="10" />
+				<textarea class={markdown} name="markdown" rows="10" />
 			</label>
 
 			<div class="flex gap-4 -mt-4">
