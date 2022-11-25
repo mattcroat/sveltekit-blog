@@ -12,7 +12,7 @@ const postWithCategory = Prisma.validator<Prisma.PostArgs>()({
 	},
 })
 
-const postWithRequiredFields = Prisma.validator<Prisma.PostArgs>()({
+const post = Prisma.validator<Prisma.PostArgs>()({
 	select: {
 		slug: true,
 		title: true,
@@ -25,7 +25,4 @@ const postWithRequiredFields = Prisma.validator<Prisma.PostArgs>()({
 })
 
 export type PostWithCategory = Prisma.PostGetPayload<typeof postWithCategory>
-
-export type PostWithRequiredFields = Prisma.PostGetPayload<
-	typeof postWithRequiredFields
->
+export type Post = Prisma.PostGetPayload<typeof post>

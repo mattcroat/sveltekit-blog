@@ -6,15 +6,16 @@
 	export let form: ActionData
 
 	$: ({ categories } = data)
+	$: errors = form?.errors
 
 	const field = `mt-2 p-4 bg-neutral-700/20 rounded-2xl border border-neutral-600/30 focus:border-red-400 focus:ring-red-400 ${
-		form?.errors?.slug && 'border border-red-400'
+		errors?.slug && 'border border-red-400'
 	}`
 	const error = 'block mt-2 text-red-400'
 </script>
 
 <section class="w-full p-8">
-	<form method="POST" action="?/create" use:enhance>
+	<form method="POST" action="?/create" autocomplete="off" use:enhance>
 		<div>
 			<p class="text-2xl font-semibold">Creating</p>
 		</div>
@@ -31,9 +32,9 @@
 					required
 				/>
 
-				{#if form?.errors?.slug}
+				{#if errors?.slug}
 					<span class={error}>
-						{form?.errors?.slug[0]}
+						{errors?.slug[0]}
 					</span>
 				{/if}
 			</label>
@@ -49,9 +50,9 @@
 					required
 				/>
 
-				{#if form?.errors?.title}
+				{#if errors?.title}
 					<span class={error}>
-						{form?.errors?.title[0]}
+						{errors?.title[0]}
 					</span>
 				{/if}
 			</label>
@@ -67,9 +68,9 @@
 					required
 				/>
 
-				{#if form?.errors?.image}
+				{#if errors?.image}
 					<span class={error}>
-						{form?.errors?.image[0]}
+						{errors?.image[0]}
 					</span>
 				{/if}
 			</label>
@@ -85,9 +86,9 @@
 					required
 				/>
 
-				{#if form?.errors?.description}
+				{#if errors?.description}
 					<span class={error}>
-						{form?.errors?.description[0]}
+						{errors?.description[0]}
 					</span>
 				{/if}
 			</label>
@@ -101,9 +102,9 @@
 					{/each}
 				</select>
 
-				{#if form?.errors?.category}
+				{#if errors?.category}
 					<span class={error}>
-						{form?.errors?.category[0]}
+						{errors?.category[0]}
 					</span>
 				{/if}
 			</label>
