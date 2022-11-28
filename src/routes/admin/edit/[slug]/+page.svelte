@@ -1,93 +1,140 @@
 <script lang="ts">
 	import { enhance } from '$app/forms'
-	import type { PageServerData } from './$types'
+	import type { ActionData, PageServerData } from './$types'
 
 	export let data: PageServerData
+	export let form: ActionData
 
 	$: ({ categories, post } = data)
+	$: errors = form?.errors
 </script>
 
-<section>
-	<form method="POST" action="?/save" use:enhance>
+<section class="p-8">
+	<form method="POST" action="?/save" autocomplete="off" use:enhance>
 		<div class="flex justify-between">
-			<p class="fs-3 font-semibold">Editing</p>
+			<p class="text-2xl font-semibold">Editing</p>
 			<button
+				class="inline-block px-4 py-2 font-semibold text-red-900 bg-red-200 rounded-2xl hover:bg-red-100 transition-colors"
 				formaction="?/delete"
-				class="button"
-				data-type="danger"
 				type="submit"
 			>
 				Delete
 			</button>
 		</div>
 
-		<div class="space-items mt-3">
-			<label class="block">
-				<p>Slug</p>
+		<div class="grid gap-6 mt-6">
+			<label>
+				<span class="block">Slug</span>
+
 				<input
-					class="mt-1"
+					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.slug &&
+						'border-red-600 dark:border-red-400'}"
 					type="text"
 					name="slug"
 					value={post.slug}
 					required
 				/>
+
+				{#if errors?.slug}
+					<span class="block mt-2 text-red-600 dark:text-red-400">
+						{errors?.slug[0]}
+					</span>
+				{/if}
 			</label>
 
-			<label class="block">
-				<p>Title</p>
+			<label>
+				<span class="block">Title</span>
+
 				<input
-					class="mt-1"
+					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.title &&
+						'border-red-600 dark:border-red-400'}"
 					type="text"
 					name="title"
 					value={post.title}
 					required
 				/>
+
+				{#if errors?.title}
+					<span class="block mt-2 text-red-600 dark:text-red-400">
+						{errors?.title[0]}
+					</span>
+				{/if}
 			</label>
 
-			<label class="block">
-				<p>Image</p>
+			<label>
+				<span class="block">Image</span>
+
 				<input
-					class="mt-1"
+					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.image &&
+						'border-red-600 dark:border-red-400'}"
 					type="text"
 					name="image"
 					value={post.image}
 					required
 				/>
+
+				{#if errors?.image}
+					<span class="block mt-2 text-red-600 dark:text-red-400">
+						{errors?.image[0]}
+					</span>
+				{/if}
 			</label>
 
-			<label class="block">
-				<p>Description</p>
+			<label>
+				<span class="block">Description</span>
+
 				<input
-					class="mt-1"
+					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.description &&
+						'border-red-600 dark:border-red-400'}"
 					type="text"
 					name="description"
 					value={post.description}
 					required
 				/>
+
+				{#if errors?.description}
+					<span class="block mt-2 text-red-600 dark:text-red-400">
+						{errors?.description[0]}
+					</span>
+				{/if}
 			</label>
 
-			<label class="block">
-				<p>Category</p>
-				<select class="mt-1" name="category" required>
+			<label>
+				<span class="block">Category</span>
+
+				<select
+					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.category &&
+						'border-red-600 dark:border-red-400'}"
+					name="category"
+					required
+				>
 					{#each categories as category}
 						{@const selected = category.name === post.category.name}
 						<option value={category.name} {selected}>{category.name}</option>
 					{/each}
 				</select>
+
+				{#if errors?.category}
+					<span class="block mt-2 text-red-600 dark:text-red-400">
+						{errors?.category[0]}
+					</span>
+				{/if}
 			</label>
 
-			<label class="block">
-				<p>Markdown</p>
+			<label>
+				<span class="block">Markdown</span>
 				<textarea
-					class="mt-1"
+					class="w-full mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.markdown &&
+						'border-red-600 dark:border-red-400'}"
 					name="markdown"
 					rows="10"
 					value={post.markdown}
 				/>
 			</label>
 
-			<div class="flex">
-				<label class="flex items-center">
+			<div class="flex gap-4 -mt-4">
+				<label>
+					<input type="hidden" name="published" />
 					<input
 						type="checkbox"
 						name="published"
@@ -97,7 +144,8 @@
 					<span>Published</span>
 				</label>
 
-				<label class="flex items-center">
+				<label>
+					<input type="hidden" name="featured" />
 					<input
 						type="checkbox"
 						name="featured"
@@ -108,11 +156,16 @@
 				</label>
 			</div>
 
-			<div class="mt-5">
-				<button class="button" data-type="primary" type="submit">Save</button>
+			<div class="flex gap-4 mt-8">
+				<button
+					class="inline-block px-4 py-2 font-semibold text-green-900 bg-green-300 rounded-2xl hover:bg-green-200 transition-colors"
+					type="submit"
+				>
+					Save
+				</button>
+
 				<a
-					class="button"
-					data-type="secondary"
+					class="py-2 font-semibold text-gray-900 dark:text-gray-200 underline underline-offset-8 transition-colors"
 					href="/{post.slug}?preview"
 					target="_blank"
 					rel="noreferrer"
@@ -123,34 +176,3 @@
 		</div>
 	</form>
 </section>
-
-<style lang="postcss">
-	section {
-		padding: var(--space-4);
-	}
-
-	form {
-		& label:has(input[type='checkbox']) {
-			--gap: var(--space-1);
-		}
-
-		& :is(input, select, textarea) {
-			--bg: hsl(210 10% 28%);
-			--border: hsl(210 10% 32%);
-
-			padding: var(--space-2);
-			border: 1px solid var(--border);
-			border-radius: var(--round-1);
-			background: var(--bg);
-
-			@nest [data-theme='light'] & {
-				--bg: hsl(210 17% 94%);
-				--border: hsl(210 17% 90%);
-			}
-		}
-
-		& textarea {
-			width: 100%;
-		}
-	}
-</style>

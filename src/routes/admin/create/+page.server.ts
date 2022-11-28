@@ -1,7 +1,8 @@
+import { z } from 'zod'
+import { invalid, redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
 
 import { createPost, getCategories } from '$lib/posts'
-import { redirect } from '@sveltejs/kit'
 
 export const load: PageServerLoad = async () => {
 	return {
@@ -11,18 +12,36 @@ export const load: PageServerLoad = async () => {
 
 export const actions: Actions = {
 	create: async ({ request }) => {
-		const data = await request.formData()
+		const formData = await request.formData()
+		const postData = Object.fromEntries(formData)
+
+		const postSchema = z.object({
+			slug: z
+				.string()
+				.regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, { message: 'Invalid slug' }),
+			title: z.string().min(1, { message: 'Missing title' }),
+			image: z.string().url({ message: 'Must provide image URL' }),
+			description: z.string().min(1, { message: 'Missing description' }),
+			category: z.string().min(1, { message: 'Missing category' }),
+			markdown: z.string(),
+			published: z.string(),
+			featured: z.string(),
+		})
+
+		const validatedPost = postSchema.safeParse(postData)
+
+		if (!validatedPost.success) {
+			const { fieldErrors: errors } = validatedPost.error.flatten()
+			return invalid(400, { error: true, errors })
+		}
 
 		const post = {
-			slug: data.get('slug') as string,
-			title: data.get('title') as string,
-			image: data.get('image') as string,
-			description: data.get('description') as string,
-			markdown: data.get('markdown') as string,
-			published: !!data.get('published'),
-			featured: !!data.get('featured'),
+			...validatedPost.data,
+			published: !!validatedPost.data.published,
+			featured: !!validatedPost.data.featured,
 		}
-		const category = data.get('category') as string
+		const category = validatedPost.data.category
+
 		createPost(post, category)
 
 		throw redirect(303, '/admin')

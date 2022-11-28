@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit'
-import type { PostWithRequiredFields } from './types'
+import type { Post } from './types'
 
 import { db } from '$lib/database'
 
@@ -103,10 +103,7 @@ export async function getPost(slug: string) {
 	return { post }
 }
 
-export async function createPost(
-	post: PostWithRequiredFields,
-	category: string
-) {
+export async function createPost(post: Post, category: string) {
 	await db.post.create({
 		data: {
 			...post,
@@ -117,10 +114,7 @@ export async function createPost(
 	})
 }
 
-export async function updatePost(
-	post: PostWithRequiredFields,
-	category: string
-) {
+export async function updatePost(post: Post, category: string) {
 	await db.post.update({
 		where: { slug: post.slug },
 		data: {
