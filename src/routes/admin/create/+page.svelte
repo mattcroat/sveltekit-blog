@@ -20,7 +20,7 @@
 				<span class="block">Slug</span>
 
 				<input
-					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.slug &&
+					class="w-full sm:w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.slug &&
 						'border-red-600 dark:border-red-400'}"
 					type="text"
 					name="slug"
@@ -39,7 +39,7 @@
 				<span class="block">Title</span>
 
 				<input
-					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.title &&
+					class="w-full sm:w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.title &&
 						'border-red-600 dark:border-red-400'}"
 					type="text"
 					name="title"
@@ -58,7 +58,7 @@
 				<span class="block">Image</span>
 
 				<input
-					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.image &&
+					class="w-full sm:w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.image &&
 						'border-red-600 dark:border-red-400'}"
 					type="text"
 					name="image"
@@ -77,7 +77,7 @@
 				<span class="block">Description</span>
 
 				<input
-					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.description &&
+					class="w-full sm:w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.description &&
 						'border-red-600 dark:border-red-400'}"
 					type="text"
 					name="description"
@@ -96,7 +96,7 @@
 				<span class="block">Category</span>
 
 				<select
-					class="w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.category &&
+					class="w-full sm:w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.category &&
 						'border-red-600 dark:border-red-400'}"
 					name="category"
 					required
