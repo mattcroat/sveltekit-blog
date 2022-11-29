@@ -46,20 +46,9 @@ export const actions: Actions = {
 	},
 	delete: async ({ request }) => {
 		const formData = await request.formData()
-		const slug = formData.get('slug')
+		const slug = formData.get('slug') as string
 
-		const slugSchema = z
-			.string()
-			.regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, { message: 'Invalid slug' })
-
-		const validatedSlug = slugSchema.safeParse(slug)
-
-		if (!validatedSlug.success) {
-			const { formErrors: slug } = validatedSlug.error.flatten()
-			return invalid(400, { error: true, errors: { slug } })
-		}
-
-		deletePost(validatedSlug.data)
+		deletePost(slug)
 
 		throw redirect(303, '/admin')
 	},
