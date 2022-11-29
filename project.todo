@@ -1,0 +1,27 @@
+Todo:
+  ☐ About page
+  ☐ Social link
+  ☐ RSS feed
+  ☐ SEO
+  ☐ Replace textarea with editor
+  ☐ Style prose
+  ☐ Error handling
+  ☐ Toast notifications 
+  ☐ Use toggle instead of checkbox
+  ☐ Register and login
+  ☐ Add tests
+  ☐ Posts search
+  ☐ Design system
+  ☐ Class sorting plugin
+  ☐ Scroll up if form has error
+  ☐ Deployment
+  
+Issues:
+  ☐ Set a limit for posts
+  ✔ Responsive form @done
+  ☐ Changing the slug doesn't work because it has no reference to the old slug
+  ☐ Checking featured requires a check if there's another featured post
+  ☐ Category styles
+  ✔ Form error validation @done
+  ☐ Prisma error validation
+  ☐ What if there is no featured post
