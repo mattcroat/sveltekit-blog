@@ -16,6 +16,7 @@ export async function getPosts() {
 			category: true,
 		},
 		orderBy: { createdAt: 'desc' },
+		take: 6,
 	})
 
 	if (!posts) {
