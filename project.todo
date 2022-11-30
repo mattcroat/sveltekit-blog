@@ -5,7 +5,7 @@ Todo:
   ☐ SEO
   ☐ Replace textarea with editor
   ☐ Style prose
-  ☐ Error handling
+  ☐ Error page
   ☐ Toast notifications 
   ☐ Use toggle instead of checkbox
   ☐ Register and login
@@ -17,11 +17,11 @@ Todo:
   ☐ Deployment
   
 Issues:
-  ☐ Set a limit for posts
+  ✔ Set a limit for posts @done
   ✔ Responsive form @done
-  ☐ Changing the slug doesn't work because it has no reference to the old slug
-  ☐ Checking featured requires a check if there's another featured post
+  ✔ Changing the slug doesn't work because it has no reference to the old slug @done
+  ✔ Checking featured requires a check if there's another featured post @done
   ☐ Category styles
   ✔ Form error validation @done
   ☐ Prisma error validation
-  ☐ What if there is no featured post
+  ✔ What if there is no featured post @done
