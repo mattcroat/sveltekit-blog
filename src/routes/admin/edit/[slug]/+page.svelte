@@ -26,6 +26,8 @@
 			<label>
 				<span class="block">Slug</span>
 
+				<input type="hidden" name="currentSlug" value={post.slug} />
+
 				<input
 					class="w-full sm:w-80 mt-2 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-600/30 focus:border-red-400 focus:ring-red-400 {errors?.slug &&
 						'border-red-600 dark:border-red-400'}"

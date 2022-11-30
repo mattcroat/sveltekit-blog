@@ -140,14 +140,14 @@ export async function createPost(post: Post, category: string) {
 	})
 }
 
-export async function updatePost(post: Post, category: string) {
+export async function updatePost(slug: string, post: Post, category: string) {
 	if (post.featured) {
 		const isFeatured = await isFeaturedPost(post.slug)
 		!isFeatured && updateFeaturedPost()
 	}
 
 	await db.post.update({
-		where: { slug: post.slug },
+		where: { slug },
 		data: {
 			...post,
 			category: {

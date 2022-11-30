@@ -33,6 +33,7 @@ export const actions: Actions = {
 			return invalid(400, { error: true, errors })
 		}
 
+		const slug = postData.currentSlug as string
 		const post = {
 			...validatedPost.data,
 			published: !!validatedPost.data.published,
@@ -40,7 +41,7 @@ export const actions: Actions = {
 		}
 		const category = validatedPost.data.category
 
-		updatePost(post, category)
+		updatePost(slug, post, category)
 
 		throw redirect(303, `/admin/edit/${post.slug}`)
 	},
