@@ -22,8 +22,8 @@ export const actions: Actions = {
 			description: z.string().min(1, { message: 'Missing description' }),
 			category: z.string().min(1, { message: 'Missing category' }),
 			markdown: z.string(),
-			published: z.string(),
-			featured: z.string(),
+			published: z.string().optional(),
+			featured: z.string().optional(),
 		})
 
 		const validatedPost = postSchema.safeParse(postData)

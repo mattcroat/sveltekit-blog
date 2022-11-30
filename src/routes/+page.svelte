@@ -9,7 +9,9 @@
 </script>
 
 <div class="sm:max-w-screen-xl sm:mx-auto px-8 mt-12">
-	<FeaturedPost post={featured} />
+	{#if featured}
+		<FeaturedPost post={featured} />
+	{/if}
 
 	<div class="grid grid-cols-posts gap-12 mt-12">
 		{#each posts as post}

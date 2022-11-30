@@ -57,10 +57,6 @@ export async function getFeaturedPost() {
 		},
 	})
 
-	if (!featuredPost) {
-		throw error(404, 'Featured post not found')
-	}
-
 	return featuredPost
 }
 
@@ -103,7 +99,37 @@ export async function getPost(slug: string) {
 	return { post }
 }
 
+async function updateFeaturedPost() {
+	const featuredPost = await db.post.findFirst({
+		where: { featured: { equals: true } },
+	})
+
+	if (featuredPost) {
+		await db.post.update({
+			where: { slug: featuredPost?.slug },
+			data: { featured: false },
+		})
+	}
+}
+
+async function isFeaturedPost(slug: string) {
+	const post = await db.post.findFirst({
+		where: { slug },
+		select: { featured: true },
+	})
+
+	if (!post) {
+		throw error(404, 'Post not found')
+	}
+
+	return post.featured
+}
+
 export async function createPost(post: Post, category: string) {
+	if (post.featured) {
+		updateFeaturedPost()
+	}
+
 	await db.post.create({
 		data: {
 			...post,
@@ -115,6 +141,11 @@ export async function createPost(post: Post, category: string) {
 }
 
 export async function updatePost(post: Post, category: string) {
+	if (post.featured) {
+		const isFeatured = await isFeaturedPost(post.slug)
+		!isFeatured && updateFeaturedPost()
+	}
+
 	await db.post.update({
 		where: { slug: post.slug },
 		data: {

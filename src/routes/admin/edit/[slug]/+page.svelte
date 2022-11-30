@@ -134,7 +134,6 @@
 
 			<div class="flex gap-4 -mt-4">
 				<label>
-					<input type="hidden" name="published" />
 					<input
 						type="checkbox"
 						name="published"
@@ -145,7 +144,6 @@
 				</label>
 
 				<label>
-					<input type="hidden" name="featured" />
 					<input
 						type="checkbox"
 						name="featured"
