@@ -10,7 +10,15 @@
 <aside>
 	<h4 class="text-2xl font-semibold">Posts</h4>
 
-	<nav class="grid gap-4 mt-6">
+	<form method="GET" action="/admin?/search" autocomplete="off">
+		<input
+			class="w-full mt-6 p-4 bg-neutral-200/40 dark:bg-neutral-700/20 rounded-2xl border border-neutral-200/60 dark:border-neutral-700/20 focus:border-red-400 focus:ring-red-400"
+			type="search"
+			name="search"
+		/>
+	</form>
+
+	<nav class="max-h-96 grid gap-4 mt-6 pr-4 overflow-y-auto">
 		{#each posts as post}
 			<a
 				href="/admin/edit/{post.slug}"

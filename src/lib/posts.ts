@@ -26,19 +26,25 @@ export async function getPosts() {
 	return posts
 }
 
-export async function getPostsToEdit() {
-	const posts = await db.post.findMany({
-		select: {
-			slug: true,
-			title: true,
-		},
-	})
-
-	if (!posts) {
-		throw error(404, 'Posts not found')
+export async function searchPosts(searchTerm?: string) {
+	if (searchTerm) {
+		const posts = await db.post.findMany({
+			select: { slug: true, title: true },
+		})
+		const results = posts.filter((post) =>
+			post.title.toLowerCase().includes(searchTerm.toLowerCase())
+		)
+		return results
 	}
 
-	return posts
+	if (!searchTerm) {
+		return await db.post.findMany({
+			select: {
+				slug: true,
+				title: true,
+			},
+		})
+	}
 }
 
 export async function getFeaturedPost() {

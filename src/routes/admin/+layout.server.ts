@@ -1,13 +1,8 @@
 import type { LayoutServerLoad } from './$types'
-import { getPostsToEdit } from '$lib/posts'
+import { searchPosts } from '$lib/posts'
 
-export const load: LayoutServerLoad = async () => {
-	const postsToEdit = await getPostsToEdit()
-
-	const posts = postsToEdit.map((post) => ({
-		slug: post.slug,
-		title: post.title,
-	}))
-
+export const load: LayoutServerLoad = async ({ url }) => {
+	const searchTerm = url.searchParams.get('search') as string
+	const posts = await searchPosts(searchTerm)
 	return { posts }
 }

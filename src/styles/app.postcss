@@ -9,6 +9,28 @@
 	outline: 1px solid hsl(0 0% 18%);
 }
 
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: theme(colors.neutral.200);
+	border-radius: theme(borderRadius.2xl);
+}
+
+::-webkit-scrollbar-thumb {
+	background: theme(colors.neutral.400);
+	border-radius: theme(borderRadius.2xl);
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-track {
+	background: theme(colors.neutral.800);
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+	background: theme(colors.neutral.600);
+}
+
 @layer utilities {
 	.grid-cols-posts {
 		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
