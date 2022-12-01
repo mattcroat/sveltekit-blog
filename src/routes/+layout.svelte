@@ -9,7 +9,7 @@
 </svelte:head>
 
 <div>
-	<div class="sm:max-w-screen-xl sm:mx-auto px-8 mt-12">
+	<div class="container">
 		<Navigation />
 	</div>
 	<slot />

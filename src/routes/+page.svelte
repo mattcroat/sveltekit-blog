@@ -8,14 +8,27 @@
 	$: ({ featured, posts } = data)
 </script>
 
-<div class="sm:max-w-screen-xl sm:mx-auto px-8 mt-12">
+<div class="container">
 	{#if featured}
 		<FeaturedPost post={featured} />
 	{/if}
 
-	<div class="grid grid-cols-posts gap-12 mt-12">
+	<div class="posts">
 		{#each posts as post}
 			<Post {post} />
 		{/each}
 	</div>
 </div>
+
+<style lang="postcss">
+	.container {
+		padding-block: var(--space-6);
+	}
+
+	.posts {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		margin-top: var(--space-7);
+		gap: var(--space-6);
+	}
+</style>
