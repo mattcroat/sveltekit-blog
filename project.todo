@@ -7,13 +7,15 @@ Todo:
   ☐ Style prose
   ☐ Error page
   ☐ Toast notifications 
-  ☐ Use toggle instead of checkbox
+  ☐ Use switch instead of checkbox
   ☐ Register and login
   ☐ Add tests
-  ☐ Posts search
+  ✔ Posts search @done
   ☐ Design system
   ☐ Class sorting plugin
   ☐ Scroll up if form has error
+  ☐ Accent color
+  ☐ Animations
   ☐ Deployment
   
 Issues:
