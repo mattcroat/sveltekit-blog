@@ -21,6 +21,10 @@
 </a>
 
 <style lang="postcss">
+	article {
+		all: revert;
+	}
+
 	.zoom {
 		overflow: hidden;
 		border-radius: var(--round-1);
@@ -46,9 +50,6 @@
 	}
 
 	.details {
-		display: grid;
-		gap: var(--space-2);
-
 		& .category {
 			margin-top: var(--fs-3);
 			color: var(--clr-brand);
@@ -56,14 +57,14 @@
 		}
 
 		& .title {
-			color: hsl(0 0% 98%);
-			font-weight: 700;
+			margin-block: var(--fs-2);
+			color: hsl(206 29% 98%);
 			font-size: var(--fs-3);
 			text-transform: capitalize;
 		}
 
 		& .description {
-			color: hsl(0 0% 45%);
+			color: hsl(206 29% 60%);
 			font-size: var(--fs-2);
 		}
 

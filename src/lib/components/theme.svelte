@@ -87,8 +87,10 @@
 
 <style lang="postcss">
 	button {
+		margin: 0;
 		padding: 0;
 		overflow: hidden;
+		border: none;
 		background: none;
 	}
 </style>

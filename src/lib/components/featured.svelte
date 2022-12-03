@@ -6,7 +6,7 @@
 </script>
 
 <a href={post.slug}>
-	<article class="group">
+	<article>
 		<div class="zoom">
 			<img src={post.image} alt={post.title} />
 		</div>
@@ -22,9 +22,11 @@
 
 <style lang="postcss">
 	article {
+		all: revert;
+
 		@media (--md) {
 			display: grid;
-			grid-template-columns: repeat(2, 1fr);
+			grid-template-columns: 60% 1fr;
 			gap: var(--space-4);
 		}
 	}
@@ -50,10 +52,6 @@
 	}
 
 	.details {
-		display: grid;
-		align-content: start;
-		gap: var(--space-2);
-
 		& .category {
 			margin-top: var(--fs-3);
 			color: var(--clr-brand);
@@ -65,14 +63,14 @@
 		}
 
 		& .title {
-			color: hsl(0 0% 98%);
-			font-weight: 700;
+			margin-block: var(--fs-2);
+			color: hsl(206 29% 98%);
 			font-size: var(--fs-4);
 			text-transform: capitalize;
 		}
 
 		& .description {
-			color: hsl(0 0% 45%);
+			color: hsl(206 29% 60%);
 			font-size: var(--fs-2);
 		}
 

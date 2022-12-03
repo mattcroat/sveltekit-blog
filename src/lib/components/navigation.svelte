@@ -7,27 +7,30 @@
 		<a class="logo" href="/">Sveltr</a>
 	</div>
 
-	<div class="links">
+	<ul class="links">
 		<a href="/about">About</a>
 		<a href="/github">GitHub</a>
 		<a href="/rss.xml">RSS</a>
 		<a href="/admin">Admin</a>
 		<Theme />
-	</div>
+	</ul>
 </nav>
 
 <style lang="postcss">
 	nav {
+		margin-top: var(--space-4);
+
 		@media (--sm) {
-			display: flex;
+			/* display: flex;
 			align-items: center;
-			justify-content: space-between;
+			justify-content: space-between; */
 		}
 	}
 
 	.logo {
+		color: white;
 		font-weight: 600;
-		font-size: var(--fs-3);
+		font-size: var(--fs-2);
 		text-transform: uppercase;
 	}
 
@@ -42,7 +45,7 @@
 		}
 
 		& a {
-			font-size: var(--fs-2);
+			font-size: var(--fs-1);
 			transition: color 0.3s ease;
 
 			&:hover {

@@ -22,7 +22,7 @@
 
 <style lang="postcss">
 	.container {
-		padding-block: var(--space-6);
+		padding-block: var(--space-7);
 	}
 
 	.posts {

@@ -8,11 +8,9 @@
 	$: ({ posts } = data)
 </script>
 
-<div class="sm:max-w-screen-xl sm:mx-auto px-8 mt-12">
-	<main
-		class="bg-neutral-100 dark:bg-neutral-800 rounded-2xl overflow-hidden border border-neutral-200/40 dark:border-neutral-800 md:grid md:grid-cols-editor"
-	>
-		<div class="p-8 bg-neutral-200/20 dark:bg-neutral-900/40">
+<div class="container">
+	<main>
+		<div class="sidebar">
 			<Sidebar {posts} />
 		</div>
 
@@ -21,3 +19,18 @@
 		</div>
 	</main>
 </div>
+
+<style lang="postcss">
+	.container {
+		padding-block: var(--space-7);
+	}
+
+	main {
+		display: grid;
+		grid-template-columns: 28% 1fr;
+	}
+
+	/* .sidebar {
+		background: teal;
+	} */
+</style>
