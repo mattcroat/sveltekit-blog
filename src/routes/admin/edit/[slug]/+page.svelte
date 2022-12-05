@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Eye, Save, Trash2 } from 'lucide-svelte'
 	import { enhance } from '$app/forms'
 	import type { ActionData, PageServerData } from './$types'
 
@@ -10,155 +11,166 @@
 </script>
 
 <section>
-	<span class="title">Editing</span>
+	<h1>Editing</h1>
 
 	<form method="POST" action="?/save" autocomplete="off" use:enhance>
-		<div class="fields">
+		<label>
+			<span>Slug</span>
+			<input type="hidden" name="currentSlug" value={post.slug} />
+			<input
+				type="text"
+				name="slug"
+				value={post.slug}
+				aria-invalid={errors?.slug && true}
+				required
+			/>
+
+			{#if errors?.slug}
+				<p class="error">{errors?.slug[0]}</p>
+			{/if}
+		</label>
+
+		<label>
+			<span>Title</span>
+			<input
+				type="text"
+				name="title"
+				value={post.title}
+				aria-invalid={errors?.title && true}
+				required
+			/>
+
+			{#if errors?.title}
+				<p class="error">{errors?.title[0]}</p>
+			{/if}
+		</label>
+
+		<label>
+			<span>Image</span>
+			<input
+				type="text"
+				name="image"
+				value={post.image}
+				aria-invalid={errors?.image && true}
+				required
+			/>
+
+			{#if errors?.image}
+				<p class="error">{errors?.image[0]}</p>
+			{/if}
+		</label>
+
+		<label>
+			<span>Description</span>
+			<input
+				type="text"
+				name="description"
+				value={post.description}
+				aria-invalid={errors?.description && true}
+				required
+			/>
+
+			{#if errors?.description}
+				<span>{errors?.description[0]}</span>
+			{/if}
+		</label>
+
+		<label>
+			<span>Category</span>
+			<select name="category" aria-invalid={errors?.category && true} required>
+				{#each categories as category}
+					{@const selected = category.name === post.category.name}
+					<option value={category.name} {selected}>{category.name}</option>
+				{/each}
+			</select>
+
+			{#if errors?.category}
+				<p class="error">{errors?.category[0]}</p>
+			{/if}
+		</label>
+
+		<label>
+			<span>Markdown</span>
+			<textarea name="markdown" rows="10" value={post.markdown} />
+		</label>
+
+		<div class="flex">
 			<label>
-				<span>Slug</span>
-				<input type="hidden" name="currentSlug" value={post.slug} />
-				<input type="text" name="slug" value={post.slug} required />
-
-				{#if errors?.slug}
-					<span>{errors?.slug[0]}</span>
-				{/if}
-			</label>
-
-			<label>
-				<span>Title</span>
-				<input type="text" name="title" value={post.title} required />
-
-				{#if errors?.title}
-					<span>{errors?.title[0]}</span>
-				{/if}
-			</label>
-
-			<label>
-				<span>Image</span>
-				<input type="text" name="image" value={post.image} required />
-
-				{#if errors?.image}
-					<span>{errors?.image[0]}</span>
-				{/if}
-			</label>
-
-			<label>
-				<span>Description</span>
 				<input
-					type="text"
-					name="description"
-					value={post.description}
-					required
+					type="checkbox"
+					name="published"
+					role="switch"
+					checked={post.published}
+					value={post.published}
 				/>
-
-				{#if errors?.description}
-					<span>{errors?.description[0]}</span>
-				{/if}
+				<span>Published</span>
 			</label>
 
 			<label>
-				<span>Category</span>
-				<select name="category" required>
-					{#each categories as category}
-						{@const selected = category.name === post.category.name}
-						<option value={category.name} {selected}>{category.name}</option>
-					{/each}
-				</select>
-
-				{#if errors?.category}
-					<span>{errors?.category[0]}</span>
-				{/if}
+				<input
+					type="checkbox"
+					name="featured"
+					role="switch"
+					checked={post.featured}
+					value={post.featured}
+				/>
+				<span>Featured</span>
 			</label>
+		</div>
 
-			<label>
-				<span>Markdown</span>
-				<textarea name="markdown" rows="10" value={post.markdown} />
-			</label>
+		<div class="actions space-between">
+			<div class="flex">
+				<button class="items-center" type="submit">
+					<Save />
+					<span>Save</span>
+				</button>
 
-			<div class="publishing">
-				<label>
-					<input
-						type="checkbox"
-						name="published"
-						role="switch"
-						checked={post.published}
-						value={post.published}
-					/>
-					<span>Published</span>
-				</label>
-
-				<label>
-					<input
-						type="checkbox"
-						name="featured"
-						role="switch"
-						checked={post.featured}
-						value={post.featured}
-					/>
-					<span>Featured</span>
-				</label>
+				<a
+					href="/{post.slug}?preview"
+					role="button"
+					target="_blank"
+					rel="noreferrer"
+					class="contrast outline"
+				>
+					<div class="items-center">
+						<Eye />
+						<span>Preview</span>
+					</div>
+				</a>
 			</div>
 
-			<div class="actions">
-				<div class="submit-preview">
-					<button type="submit">Save</button>
-					<a
-						class="contrast outline"
-						href="/{post.slug}?preview"
-						role="button"
-						target="_blank"
-						rel="noreferrer"
-					>
-						Preview
-					</a>
-				</div>
-
-				<div>
-					<button formaction="?/delete" type="submit">Delete</button>
-				</div>
+			<div>
+				<button class="danger" formaction="?/delete" type="submit">
+					<div class="items-center">
+						<Trash2 />
+						<span>Delete</span>
+					</div>
+				</button>
 			</div>
 		</div>
 	</form>
 </section>
 
 <style lang="postcss">
-	section {
-		padding-left: var(--space-6);
-	}
-
-	.header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-
-	.fields {
+	form {
 		margin-top: var(--space-2);
+
+		& label:not(:has([type='checkbox'])) {
+			display: grid;
+			gap: var(--space-1);
+		}
+
+		& :is(input, select) {
+			max-width: 400px;
+		}
 	}
 
-	.title {
-		color: white;
-		font-weight: 600;
-		font-size: var(--fs-3);
-	}
-
-	.publishing {
-		display: flex;
-		gap: var(--space-2);
+	.error {
+		margin-bottom: var(--space-2);
+		color: var(--clr-text-error);
 	}
 
 	.actions {
-		display: flex;
-		justify-content: space-between;
 		margin-top: var(--space-6);
-	}
-
-	.submit-preview {
-		display: flex;
-		gap: var(--space-1);
-	}
-
-	button {
-		margin: 0;
 	}
 </style>

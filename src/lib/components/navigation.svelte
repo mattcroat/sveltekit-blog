@@ -1,50 +1,70 @@
 <script lang="ts">
 	import Theme from './theme.svelte'
+
+	const links = [
+		{ url: '/about', text: 'About' },
+		{ url: '/github', text: 'GitHub' },
+		{ url: '/rss.xml', text: 'RSS' },
+		{ url: '/admin', text: 'Admin' },
+	]
 </script>
 
-<nav>
-	<div>
-		<a class="logo" href="/">Sveltr</a>
-	</div>
+<nav class="container">
+	<ul>
+		<li>
+			<a class="logo" href="/">Sveltr</a>
+		</li>
+	</ul>
 
 	<ul class="links">
-		<a href="/about">About</a>
-		<a href="/github">GitHub</a>
-		<a href="/rss.xml">RSS</a>
-		<a href="/admin">Admin</a>
-		<Theme />
+		{#each links as { url, text }}
+			<li>
+				<a href={url}>{text}</a>
+			</li>
+		{/each}
+
+		<li>
+			<Theme />
+		</li>
 	</ul>
 </nav>
 
 <style lang="postcss">
 	nav {
+		display: block;
 		margin-top: var(--space-4);
 
 		@media (--sm) {
-			/* display: flex;
-			align-items: center;
-			justify-content: space-between; */
+			display: flex;
 		}
 	}
 
 	.logo {
-		color: white;
+		color: var(--clr-text);
 		font-weight: 600;
 		font-size: var(--fs-2);
 		text-transform: uppercase;
 	}
 
 	.links {
-		display: grid;
-		margin-top: var(--space-3);
-		gap: var(--space-4);
+		flex-direction: column;
+		align-items: start;
+		margin-top: var(--space-2);
+		color: var(--clr-text);
 
 		@media (--sm) {
-			grid-auto-flow: column;
+			flex-direction: row;
+			align-items: center;
 			margin-top: 0;
+			gap: var(--space-4);
+		}
+
+		& :last-of-type {
+			padding-inline: 0;
 		}
 
 		& a {
+			padding: 0;
 			font-size: var(--fs-1);
 			transition: color 0.3s ease;
 

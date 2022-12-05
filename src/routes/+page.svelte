@@ -22,7 +22,11 @@
 
 <style lang="postcss">
 	.container {
-		padding-block: var(--space-7);
+		--padding-block: var(--space-4);
+
+		@media (--sm) {
+			--padding-block: var(--space-7);
+		}
 	}
 
 	.posts {

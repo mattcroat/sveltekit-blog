@@ -14,6 +14,7 @@ specifiers:
   eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte3: ^4.0.0
   highlight.js: ^11.7.0
+  lucide-svelte: ^0.104.0
   marked: ^4.2.3
   postcss: ^8.4.19
   postcss-load-config: ^4.0.1
@@ -33,6 +34,7 @@ dependencies:
   '@picocss/pico': 1.5.6
   '@prisma/client': 4.7.0
   highlight.js: 11.7.0
+  lucide-svelte: 0.104.0_svelte@3.53.1
   marked: 4.2.3
   zod: 3.19.1
 
@@ -1491,6 +1493,14 @@ packages:
       yallist: 4.0.0
     dev: true
 
+  /lucide-svelte/0.104.0_svelte@3.53.1:
+    resolution: {integrity: sha512-PhckIn28E571Kx2gs2SVh5gc0RlDge521AE63ce4c8gRUMYeo9USPUr80bt/26J5+8qce+hw1zRjx/ag2BqBgw==}
+    peerDependencies:
+      svelte: ^3.49.0
+    dependencies:
+      svelte: 3.53.1
+    dev: false
+
   /magic-string/0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
     dependencies:
@@ -2358,7 +2368,6 @@ packages:
   /svelte/3.53.1:
     resolution: {integrity: sha512-Q4/hHkktZogGhN5iqxqSi9sjEVoe/NbIxX4hXEHoasTxj+TxEQVAq66LnDMdAZxjmsodkoI5F3slqsS68U7FNw==}
     engines: {node: '>= 8'}
-    dev: true
 
   /sync-threads/1.0.1:
     resolution: {integrity: sha512-hIdwt/c/e1ONnr2RJmfBxEAj/J6KQQWKdToF3Qw8ZNRsTNNteGkOe63rQy9I7J5UNlr8Yl0wkzIr9wgLY94x0Q==}

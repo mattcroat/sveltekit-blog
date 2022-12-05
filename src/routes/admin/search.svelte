@@ -8,7 +8,7 @@
 </script>
 
 <aside>
-	<span class="title">Posts</span>
+	<h2>Posts</h2>
 
 	<div class="search">
 		<form method="GET" action="/admin?/search" autocomplete="off">
@@ -17,26 +17,21 @@
 	</div>
 
 	<div class="results">
-		{#each posts as post}
-			<ul>
-				<a href="/admin/edit/{post.slug}">
-					{post.title}
-				</a>
-			</ul>
-		{/each}
+		<ul>
+			{#each posts as post}
+				<li>
+					<a href="/admin/edit/{post.slug}">
+						{post.title}
+					</a>
+				</li>
+			{/each}
+		</ul>
 	</div>
 </aside>
 
 <style lang="postcss">
 	aside {
-		padding-inline-end: var(--space-6);
-		border-right: 1px solid hsl(206 29% 20%);
-	}
-
-	.title {
-		color: white;
-		font-weight: 600;
-		font-size: var(--fs-3);
+		padding-right: var(--space-6);
 	}
 
 	.search {
@@ -44,5 +39,8 @@
 	}
 
 	.results {
+		max-height: 400px;
+		overflow-y: auto;
+		text-transform: capitalize;
 	}
 </style>

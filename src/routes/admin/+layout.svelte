@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types'
 
-	import Sidebar from './sidebar.svelte'
+	import Search from './search.svelte'
 
 	export let data: PageData
 
@@ -10,11 +10,11 @@
 
 <div class="container">
 	<main>
-		<div class="sidebar">
-			<Sidebar {posts} />
+		<div class="search">
+			<Search {posts} />
 		</div>
 
-		<div>
+		<div class="editor">
 			<slot />
 		</div>
 	</main>
@@ -22,15 +22,25 @@
 
 <style lang="postcss">
 	.container {
-		padding-block: var(--space-7);
+		--padding-block: var(--space-4);
+
+		@media (--sm) {
+			--padding-block: var(--space-7);
+		}
 	}
 
 	main {
-		display: grid;
-		grid-template-columns: 28% 1fr;
-	}
+		@media (--md) {
+			display: grid;
+			grid-template-columns: 28% 1fr;
 
-	/* .sidebar {
-		background: teal;
-	} */
+			& .search {
+				border-right: 1px solid var(--clr-border-muted);
+			}
+
+			& .editor {
+				padding-left: var(--space-6);
+			}
+		}
+	}
 </style>

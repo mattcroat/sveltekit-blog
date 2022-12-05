@@ -10,8 +10,6 @@
 </svelte:head>
 
 <div>
-	<div class="container">
-		<Navigation />
-	</div>
+	<Navigation />
 	<slot />
 </div>

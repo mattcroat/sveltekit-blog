@@ -64,13 +64,13 @@
 
 		& .title {
 			margin-block: var(--fs-2);
-			color: hsl(206 29% 98%);
+			color: var(--clr-text);
 			font-size: var(--fs-4);
 			text-transform: capitalize;
 		}
 
 		& .description {
-			color: hsl(206 29% 60%);
+			color: var(--clr-text-muted);
 			font-size: var(--fs-2);
 		}
 
