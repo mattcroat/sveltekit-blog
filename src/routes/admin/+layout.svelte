@@ -1,23 +1,46 @@
 <script lang="ts">
 	import type { PageData } from './$types'
 
-	import Sidebar from './sidebar.svelte'
+	import Search from './search.svelte'
 
 	export let data: PageData
 
 	$: ({ posts } = data)
 </script>
 
-<div class="sm:max-w-screen-xl sm:mx-auto px-8 mt-12">
-	<main
-		class="bg-neutral-100 dark:bg-neutral-800 rounded-2xl overflow-hidden border border-neutral-200/40 dark:border-neutral-800 md:grid md:grid-cols-editor"
-	>
-		<div class="p-8 bg-neutral-200/20 dark:bg-neutral-900/40">
-			<Sidebar {posts} />
+<div class="container">
+	<main>
+		<div class="search">
+			<Search {posts} />
 		</div>
 
-		<div>
+		<div class="editor">
 			<slot />
 		</div>
 	</main>
 </div>
+
+<style lang="postcss">
+	.container {
+		--padding-block: var(--space-4);
+
+		@media (--sm) {
+			--padding-block: var(--space-7);
+		}
+	}
+
+	main {
+		@media (--md) {
+			display: grid;
+			grid-template-columns: 28% 1fr;
+
+			& .search {
+				border-right: 1px solid var(--clr-border-muted);
+			}
+
+			& .editor {
+				padding-left: var(--space-6);
+			}
+		}
+	}
+</style>

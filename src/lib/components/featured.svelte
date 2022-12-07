@@ -6,26 +6,76 @@
 </script>
 
 <a href={post.slug}>
-	<article class="group md:grid md:grid-cols-2">
-		<div
-			class="rounded-2xl shadow-sm overflow-hidden group-hover:outline-red-400 group-hover:outline-2 group-hover:outline-offset-8"
-		>
-			<img
-				class="w-full h-full object-cover aspect-[16/9] rounded-2xl group-hover:scale-125 transition-transform md:aspect-[1.5/1]"
-				src={post.image}
-				alt={post.title}
-			/>
+	<article>
+		<div class="zoom">
+			<img src={post.image} alt={post.title} />
 		</div>
 
-		<div class="space-y-4 md:ml-6">
-			<div class="mt-6 md:mt-0 text-red-600 dark:text-red-400 lowercase">
-				{post.category.name}
-			</div>
-			<h2 class="text-3xl font-bold capitalize">{post.title}</h2>
-			<p class="text-lg text-neutral-500 dark:text-neutral-400 line-clamp-4">
-				{post.description}
-			</p>
-			<time class="block">{formatDate(post.createdAt)}</time>
+		<div class="details">
+			<div class="category">{post.category.name}</div>
+			<h2 class="title">{post.title}</h2>
+			<p class="description line-clamp-4">{post.description}</p>
+			<time class="date">{formatDate(post.createdAt)}</time>
 		</div>
 	</article>
 </a>
+
+<style lang="postcss">
+	article {
+		all: revert;
+
+		@media (--md) {
+			display: grid;
+			grid-template-columns: 60% 1fr;
+			gap: var(--space-4);
+		}
+	}
+
+	.zoom {
+		overflow: hidden;
+		border-radius: var(--round-1);
+
+		&:hover {
+			outline: 2px solid var(--clr-brand);
+			outline-offset: var(--space-1);
+		}
+
+		&:hover img {
+			scale: 1.2;
+		}
+
+		& img {
+			aspect-ratio: 16 / 10;
+			object-fit: cover;
+			transition: scale 0.3s ease;
+		}
+	}
+
+	.details {
+		& .category {
+			margin-top: var(--fs-3);
+			color: var(--clr-brand);
+			text-transform: lowercase;
+
+			@media (--md) {
+				margin-top: 0;
+			}
+		}
+
+		& .title {
+			margin-block: var(--fs-2);
+			color: var(--clr-text);
+			font-size: var(--fs-4);
+			text-transform: capitalize;
+		}
+
+		& .description {
+			color: var(--clr-text-muted);
+			font-size: var(--fs-2);
+		}
+
+		& .date {
+			color: hsl(0 0% 98%);
+		}
+	}
+</style>

@@ -1,31 +1,79 @@
 <script lang="ts">
 	import Theme from './theme.svelte'
 
-	// todo: config file?
 	const links = [
-		{ text: 'About', href: '/about' },
-		{ text: 'GitHub', href: '/github' },
-		{ text: 'RSS', href: '/rss.xml' },
-		{ text: 'Admin', href: '/admin' },
+		{ url: '/about', text: 'About' },
+		{ url: '/github', text: 'GitHub' },
+		{ url: '/rss.xml', text: 'RSS' },
+		{ url: '/admin', text: 'Admin' },
 	]
 </script>
 
-<nav>
-	<div class="sm:flex sm:justify-between sm:items-center">
-		<div>
-			<a class="text-xl font-semibold uppercase" href="/">Sveltr</a>
-		</div>
+<nav class="container">
+	<ul>
+		<li>
+			<a class="logo" href="/">Sveltr</a>
+		</li>
+	</ul>
 
-		<div class="grid sm:grid-flow-col gap-8 mt-6 sm:mt-0">
-			{#each links as link}
-				<a
-					class="hover:text-red-600 dark:hover:text-red-400 hover:decoration-2 hover:underline hover:underline-offset-8 transition-colors"
-					href={link.href}
-				>
-					{link.text}
-				</a>
-			{/each}
+	<ul class="links">
+		{#each links as { url, text }}
+			<li>
+				<a href={url}>{text}</a>
+			</li>
+		{/each}
+
+		<li>
 			<Theme />
-		</div>
-	</div>
+		</li>
+	</ul>
 </nav>
+
+<style lang="postcss">
+	nav {
+		display: block;
+		margin-top: var(--space-4);
+
+		@media (--sm) {
+			display: flex;
+		}
+	}
+
+	.logo {
+		color: var(--clr-text);
+		font-weight: 600;
+		font-size: var(--fs-2);
+		text-transform: uppercase;
+	}
+
+	.links {
+		flex-direction: column;
+		align-items: start;
+		margin-top: var(--space-2);
+		color: var(--clr-text);
+
+		@media (--sm) {
+			flex-direction: row;
+			align-items: center;
+			margin-top: 0;
+			gap: var(--space-4);
+		}
+
+		& :last-of-type {
+			padding-inline: 0;
+		}
+
+		& a {
+			padding: 0;
+			font-size: var(--fs-1);
+			transition: color 0.3s ease;
+
+			&:hover {
+				color: var(--clr-brand);
+				text-decoration: underline;
+				text-decoration-thickness: 2px;
+				text-underline-offset: 8px;
+			}
+		}
+	}
+</style>

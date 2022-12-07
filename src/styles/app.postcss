@@ -1,12 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@custom-media --sm (width >= 640px);
+@custom-media --md (width >= 768px);
+@custom-media --lg (width >= 1024px);
+@custom-media --xl (width >= 1280px);
+@custom-media --light (prefers-color-scheme: light);
 
-* {
-	outline: 1px solid hsl(0 0% 18%);
+:root {
+	--font-sans: 'Poppins', sans-serif;
+	--font-mono: 'JetBrains Mono', mono;
+	--font-family: var(--font-sans);
+
+	--clr-brand: hsl(0 91% 71%);
+	--clr-text: hsl(206 29% 98%);
+	--clr-text-muted: hsl(206 29% 80%);
+	--clr-text-error: hsl(0 73% 41%);
+	--clr-border-muted: hsl(206 29% 20%);
+	--clr-scrollbar-thumb: hsl(206 29% 28%);
+	--clr-scrollbar-track: hsl(206 29% 20%);
+
+	--space-1: 0.5rem; /* 8px */
+	--space-2: 1rem; /* 16px */
+	--space-3: 1.5rem; /* 24px */
+	--space-4: 2rem; /* 32px */
+	--space-5: 2.5rem; /* 40px */
+	--space-6: 3rem; /* 48px */
+	--space-7: 4rem; /* 64px */
+
+	--fs-1: 1rem; /* 16px */
+	--fs-2: 1.125rem; /* 18px */
+	--fs-3: 1.5rem; /* 24px */
+	--fs-4: 2rem; /* 32px */
+	--fs-5: 2.5rem; /* 40px */
+	--fs-6: 3rem; /* 48px */
+
+	--round-1: 1rem; /* 16px */
+
+	color-scheme: dark;
 }
 
 ::-webkit-scrollbar {
@@ -14,36 +45,137 @@
 }
 
 ::-webkit-scrollbar-track {
-	background: theme(colors.neutral.200);
-	border-radius: theme(borderRadius.2xl);
+	border-radius: var(--round-1);
+	background: var(--clr-scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-	background: theme(colors.neutral.400);
-	border-radius: theme(borderRadius.2xl);
+	border-radius: var(--round-1);
+	background: var(--clr-scrollbar-thumb);
 }
 
-[data-theme='dark'] ::-webkit-scrollbar-track {
-	background: theme(colors.neutral.800);
+[data-theme='light'] {
+	--clr-brand: hsl(0 91% 60%);
+	--clr-text: hsl(206 29% 10%);
+	--clr-text-muted: hsl(206 29% 40%);
+	--clr-border-muted: hsl(206 29% 80%);
+	--clr-scrollbar-thumb: hsl(206 29% 90%);
+	--clr-scrollbar-track: hsl(206 29% 80%);
+
+	color-scheme: light;
 }
 
-[data-theme='dark'] ::-webkit-scrollbar-thumb {
-	background: theme(colors.neutral.600);
+@media (--light) {
+	color-scheme: light;
+	:root {
+		--clr-brand: hsl(0 91% 60%);
+		--clr-text: hsl(206 29% 10%);
+		--clr-text-muted: hsl(206 29% 40%);
+		--clr-border-muted: hsl(206 29% 80%);
+		--clr-scrollbar-thumb: hsl(206 29% 90%);
+		--clr-scrollbar-track: hsl(206 29% 80%);
+	}
 }
 
-@layer utilities {
-	.grid-cols-posts {
-		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	--font-weight: 600;
+	--color: var(--clr-text);
+
+	margin-bottom: 0;
+}
+
+img {
+	width: 100%;
+	height: 100%;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+button {
+	width: auto;
+	margin-bottom: 0;
+}
+
+input,
+select,
+textarea {
+	--form-element-color: var(--clr-text);
+}
+
+select,
+textarea,
+input:not([type='checkbox']),
+button,
+[role='button'] {
+	border-radius: var(--round-1);
+}
+
+pre,
+code,
+kbd,
+samp {
+	--font-family: var(--font-mono);
+}
+
+.container {
+	--max-width: 1280px;
+	--padding-inline: var(--space-4);
+	--padding-block: 0;
+
+	padding-inline: var(--padding-inline);
+	padding-block: var(--padding-block);
+
+	@media (--sm) {
+		max-width: var(--max-width);
+		margin-inline: auto;
 	}
 
-	.grid-cols-editor {
-		grid-template-columns: 28% 1fr;
+	@media (--xl) {
+		--padding-inline: 0;
 	}
+}
 
-	.line-clamp-4 {
-		overflow: hidden;
-		display: -webkit-box;
-		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 4;
-	}
+.flex {
+	--gap: var(--space-2);
+
+	display: flex;
+	gap: var(--space-2);
+}
+
+.space-between {
+	display: flex;
+	justify-content: space-between;
+}
+
+.items-center {
+	display: flex;
+	align-items: center;
+	gap: var(--space-1);
+}
+
+.line-clamp-4 {
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 4;
+	display: -webkit-box;
+	overflow: hidden;
+}
+
+.danger {
+	--color: hsl(9 100% 60%);
+	--background-color: hsl(9 100% 14%);
+	--border-color: hsl(9 100% 20%);
+}
+
+.danger:hover {
+	--color: hsl(9 100% 64%);
+	--background-color: hsl(9 100% 18%);
+	--border-color: hsl(9 100% 20%);
 }

@@ -6,26 +6,70 @@
 </script>
 
 <a href={post.slug}>
-	<article class="group">
-		<div
-			class="rounded-2xl shadow-sm overflow-hidden group-hover:outline-red-400 group-hover:outline-2 group-hover:outline-offset-8"
-		>
-			<img
-				class="w-full h-full object-cover aspect-[16/9] rounded-2xl group-hover:scale-125 transition-transform md:aspect-[1/1.3]"
-				src={post.image}
-				alt={post.title}
-			/>
+	<article>
+		<div class="zoom">
+			<img src={post.image} alt={post.title} />
 		</div>
 
-		<div class="space-y-4">
-			<div class="mt-6 text-red-600 dark:text-red-400 lowercase">
-				{post.category.name}
-			</div>
-			<h2 class="text-2xl font-bold capitalize">{post.title}</h2>
-			<p class="text-lg text-neutral-500 dark:text-neutral-400 line-clamp-4">
-				{post.description}
-			</p>
-			<time class="block">{formatDate(post.createdAt)}</time>
+		<div class="details">
+			<div class="category">{post.category.name}</div>
+			<h2 class="title">{post.title}</h2>
+			<p class="description line-clamp-4">{post.description}</p>
+			<time class="date">{formatDate(post.createdAt)}</time>
 		</div>
 	</article>
 </a>
+
+<style lang="postcss">
+	article {
+		all: revert;
+	}
+
+	.zoom {
+		overflow: hidden;
+		border-radius: var(--round-1);
+
+		&:hover {
+			outline: 2px solid var(--clr-brand);
+			outline-offset: var(--space-1);
+		}
+
+		&:hover img {
+			scale: 1.2;
+		}
+
+		& img {
+			aspect-ratio: 16 / 9;
+			object-fit: cover;
+			transition: scale 0.3s ease;
+
+			@media (--md) {
+				aspect-ratio: 1 / 1.3;
+			}
+		}
+	}
+
+	.details {
+		& .category {
+			margin-top: var(--fs-3);
+			color: var(--clr-brand);
+			text-transform: lowercase;
+		}
+
+		& .title {
+			margin-block: var(--fs-2);
+			color: var(--clr-text);
+			font-size: var(--fs-3);
+			text-transform: capitalize;
+		}
+
+		& .description {
+			color: var(--clr-text-muted);
+			font-size: var(--fs-2);
+		}
+
+		& .date {
+			color: hsl(0 0% 98%);
+		}
+	}
+</style>

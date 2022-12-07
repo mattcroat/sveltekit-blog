@@ -16,6 +16,8 @@ Todo:
   ☐ Scroll up if form has error
   ☐ Accent color
   ☐ Animations
+  ☐ Abstract validation logic
+  ☐ Add Prisma seed
   ☐ Deployment
   
 Issues:
@@ -23,7 +25,7 @@ Issues:
   ✔ Responsive form @done
   ✔ Changing the slug doesn't work because it has no reference to the old slug @done
   ✔ Checking featured requires a check if there's another featured post @done
-  ☐ Category styles
+  ✔ Category styles @done
   ✔ Form error validation @done
   ☐ Prisma error validation
   ✔ What if there is no featured post @done

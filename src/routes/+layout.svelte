@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Navigation from '$lib/components/navigation.svelte'
 
+	import '@picocss/pico'
 	import '../styles/app.postcss'
 </script>
 
@@ -9,8 +10,6 @@
 </svelte:head>
 
 <div>
-	<div class="sm:max-w-screen-xl sm:mx-auto px-8 mt-12">
-		<Navigation />
-	</div>
+	<Navigation />
 	<slot />
 </div>
