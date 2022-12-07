@@ -16,6 +16,10 @@
 	</p>
 </div>
 
+<svelte:head>
+	<title>About</title>
+</svelte:head>
+
 <style lang="postcss">
 	.container {
 		--padding-block: var(--space-4);

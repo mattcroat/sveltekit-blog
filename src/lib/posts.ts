@@ -69,19 +69,6 @@ export async function getFeaturedPost() {
 	return featuredPost
 }
 
-export async function getPostMarkdown(slug: string, isPreview: boolean) {
-	const post = await db.post.findUnique({
-		where: { slug },
-		select: { markdown: true, published: true },
-	})
-
-	if (!post || (!post.published && !isPreview)) {
-		throw error(404, 'Post not found')
-	}
-
-	return post
-}
-
 export async function getPostWithCategories(slug: string) {
 	const post = await db.post.findUnique({
 		where: { slug },
@@ -96,16 +83,16 @@ export async function getPostWithCategories(slug: string) {
 	return { post, categories }
 }
 
-export async function getPost(slug: string) {
+export async function getPost(slug: string, isPreview: boolean) {
 	const post = await db.post.findUnique({
 		where: { slug },
 	})
 
-	if (!post) {
+	if (!post || (!post.published && !isPreview)) {
 		throw error(404, 'Post not found')
 	}
 
-	return { post }
+	return post
 }
 
 async function updateFeaturedPost() {

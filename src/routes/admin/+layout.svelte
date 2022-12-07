@@ -8,6 +8,10 @@
 	$: ({ posts } = data)
 </script>
 
+<svelte:head>
+	<title>Admin</title>
+</svelte:head>
+
 <div class="container">
 	<main>
 		<div class="search">
