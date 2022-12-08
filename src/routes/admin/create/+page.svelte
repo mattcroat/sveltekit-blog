@@ -20,6 +20,10 @@
 				case 'error':
 					toast.error('Something went wrong')
 					break
+				default:
+					// TODO: would be neat to scroll to first error element
+					// so it's not out of view
+					window.scrollTo({ top: 0, behavior: 'smooth' })
 			}
 
 			update()
