@@ -44,6 +44,6 @@ export const actions: Actions = {
 
 		createPost(post, category)
 
-		throw redirect(303, '/admin')
+		throw redirect(303, `/admin/edit/${post.slug}`)
 	},
 }

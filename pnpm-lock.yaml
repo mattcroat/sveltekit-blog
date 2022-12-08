@@ -25,6 +25,7 @@ specifiers:
   prettier-plugin-svelte: ^2.8.1
   svelte: ^3.53.1
   svelte-check: ^2.10.0
+  svelte-french-toast: ^1.0.3
   svelte-preprocess: ^4.10.7
   ts-node: ^10.9.1
   tslib: ^2.4.1
@@ -38,6 +39,7 @@ dependencies:
   highlight.js: 11.7.0
   lucide-svelte: 0.104.0_svelte@3.53.1
   marked: 4.2.3
+  svelte-french-toast: 1.0.3_svelte@3.53.1
   zod: 3.19.1
 
 devDependencies:
@@ -2360,6 +2362,14 @@ packages:
       - sugarss
     dev: true
 
+  /svelte-french-toast/1.0.3_svelte@3.53.1:
+    resolution: {integrity: sha512-HBdutlqUx5FroucvcmMJstmTJDedXayiOSXubBYW6iL5x1PdHp+bOflGx5NxsOa6+EQckJnnVv1vJYgGsg7ngQ==}
+    dependencies:
+      svelte-writable-derived: 2.1.5_svelte@3.53.1
+    transitivePeerDependencies:
+      - svelte
+    dev: false
+
   /svelte-hmr/0.15.1_svelte@3.53.1:
     resolution: {integrity: sha512-BiKB4RZ8YSwRKCNVdNxK/GfY+r4Kjgp9jCLEy0DuqAKfmQtpL38cQK3afdpjw4sqSs4PLi3jIPJIFp259NkZtA==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
@@ -2421,6 +2431,14 @@ packages:
       svelte: 3.53.1
       typescript: 4.9.3
     dev: true
+
+  /svelte-writable-derived/2.1.5_svelte@3.53.1:
+    resolution: {integrity: sha512-g26/W1iWj7FlLwaggNwXxHwMSf70/bHAYcpBT/EijijjakCSU9/PXmn31fL/kw2P1SzVEU6ayyCFuNYqTY3RUw==}
+    peerDependencies:
+      svelte: ^3.2.1
+    dependencies:
+      svelte: 3.53.1
+    dev: false
 
   /svelte/3.53.1:
     resolution: {integrity: sha512-Q4/hHkktZogGhN5iqxqSi9sjEVoe/NbIxX4hXEHoasTxj+TxEQVAq66LnDMdAZxjmsodkoI5F3slqsS68U7FNw==}

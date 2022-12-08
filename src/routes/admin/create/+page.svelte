@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { Save } from 'lucide-svelte'
-	import { enhance } from '$app/forms'
+	import { toast } from 'svelte-french-toast'
+
+	import { enhance, type SubmitFunction } from '$app/forms'
 	import type { ActionData, PageServerData } from './$types'
 
 	export let data: PageServerData
@@ -8,12 +10,32 @@
 
 	$: ({ categories } = data)
 	$: errors = form?.errors
+
+	const createPost: SubmitFunction = () => {
+		return async ({ result, update }) => {
+			switch (result.type) {
+				case 'redirect':
+					toast.success('Post created')
+					break
+				case 'error':
+					toast.error('Something went wrong')
+					break
+			}
+
+			update()
+		}
+	}
 </script>
 
 <section>
 	<h1>Creating</h1>
 
-	<form method="POST" action="?/create" autocomplete="off" use:enhance>
+	<form
+		method="POST"
+		action="?/create"
+		autocomplete="off"
+		use:enhance={createPost}
+	>
 		<label>
 			<span>Slug</span>
 			<input

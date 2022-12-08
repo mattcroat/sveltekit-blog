@@ -42,8 +42,6 @@ export const actions: Actions = {
 		const category = validatedPost.data.category
 
 		updatePost(slug, post, category)
-
-		throw redirect(303, `/admin/edit/${post.slug}`)
 	},
 	delete: async ({ request }) => {
 		const formData = await request.formData()

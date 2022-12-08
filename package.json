@@ -45,6 +45,7 @@
 		"highlight.js": "^11.7.0",
 		"lucide-svelte": "^0.104.0",
 		"marked": "^4.2.3",
+		"svelte-french-toast": "^1.0.3",
 		"zod": "^3.19.1"
 	}
 }

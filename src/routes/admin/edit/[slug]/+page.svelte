@@ -1,6 +1,8 @@
 <script lang="ts">
+	import toast from 'svelte-french-toast'
 	import { Eye, Save, Trash2 } from 'lucide-svelte'
-	import { enhance } from '$app/forms'
+
+	import { enhance, type SubmitFunction } from '$app/forms'
 	import type { ActionData, PageServerData } from './$types'
 
 	export let data: PageServerData
@@ -8,12 +10,30 @@
 
 	$: ({ categories, post } = data)
 	$: errors = form?.errors
+
+	const savePost: SubmitFunction = ({ action, data, form }) => {
+		return async ({ result, update }) => {
+			switch (result.type) {
+				case 'success':
+					toast.success('Changes saved')
+					break
+				case 'redirect':
+					toast.success('Post deleted')
+					break
+				case 'error':
+					toast.error('Something went wrong')
+					break
+			}
+
+			update({ reset: false })
+		}
+	}
 </script>
 
 <section>
 	<h1>Editing</h1>
 
-	<form method="POST" action="?/save" autocomplete="off" use:enhance>
+	<form method="POST" action="?/save" autocomplete="off" use:enhance={savePost}>
 		<label>
 			<span>Slug</span>
 			<input type="hidden" name="currentSlug" value={post.slug} />
