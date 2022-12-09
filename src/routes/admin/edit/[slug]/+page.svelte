@@ -37,6 +37,7 @@
 
 <Modal bind:modal title="Are you sure?" text="Deleting a post is permanent.">
 	<form method="POST" action="?/delete" style="margin: 0">
+		<input type="hidden" name="slug" value={post.slug} />
 		<button class="danger" type="submit">
 			<div class="items-center">
 				<Trash2 />

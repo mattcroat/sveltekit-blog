@@ -1,8 +1,8 @@
-import { z } from 'zod'
 import { invalid, redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
 
 import { createPost, getCategories } from '$lib/posts'
+import { postSchema, validate } from '$lib/validate'
 
 export const load: PageServerLoad = async () => {
 	return {
@@ -13,26 +13,13 @@ export const load: PageServerLoad = async () => {
 export const actions: Actions = {
 	create: async ({ request }) => {
 		const formData = await request.formData()
-		const postData = Object.fromEntries(formData)
+		const validatedPost = validate(formData, postSchema)
 
-		const postSchema = z.object({
-			slug: z
-				.string()
-				.regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, { message: 'Invalid slug' }),
-			title: z.string().min(1, { message: 'Missing title' }),
-			image: z.string().url({ message: 'Must provide image URL' }),
-			description: z.string().min(1, { message: 'Missing description' }),
-			category: z.string().min(1, { message: 'Missing category' }),
-			markdown: z.string(),
-			published: z.string().optional(),
-			featured: z.string().optional(),
-		})
-
-		const validatedPost = postSchema.safeParse(postData)
-
-		if (!validatedPost.success) {
-			const { fieldErrors: errors } = validatedPost.error.flatten()
-			return invalid(400, { error: true, errors })
+		if (validatedPost.errors) {
+			return invalid(400, {
+				error: true,
+				errors: validatedPost.errors.fieldErrors,
+			})
 		}
 
 		const post = {
