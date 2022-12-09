@@ -1,21 +1,22 @@
 Todo:
   ✔ About page @done
   ☐ Site config
-  ☐ RSS feed
+  ☐ Add RSS feed
   ✔ Site SEO @done
   ☐ Replace textarea with editor
-  ☐ Style prose
-  ☐ Error page
-  ☐ Toast notifications 
+  ☐ Style post
+  ✔ Error page @done
+  ✔ Toast notifications @done
   ✔ Use switch instead of checkbox @done
   ☐ Register and login
   ☐ Add tests
   ✔ Posts search @done
-  ☐ Scroll up if form has error
+  ✔ Scroll up if form has error @done
   ☐ Pleasing UI animations
-  ☐ Abstract validation logic
+  ✔ Abstract validation logic @done
   ✔ Add Prisma seed @done
   ☐ Ignore admin for crawlers 
+  ✔ Modal @done
   ☐ Deployment
   
 Issues:
@@ -29,3 +30,4 @@ Issues:
   ✔ What if there is no featured post @done
   ☐ Might need to look into Prisma connection pool to not exhaust the database connection limit
   ☐ Theming SSR
+  ✔ Button contrast @done
