@@ -1,9 +1,11 @@
 <script lang="ts">
-	import toast from 'svelte-french-toast'
-	import { Eye, Save, Trash2 } from 'lucide-svelte'
-
 	import { enhance, type SubmitFunction } from '$app/forms'
 	import type { ActionData, PageServerData } from './$types'
+
+	import { Eye, Save, Trash2 } from 'lucide-svelte'
+	import toast from 'svelte-french-toast'
+
+	import Modal from '$lib/components/modal.svelte'
 
 	export let data: PageServerData
 	export let form: ActionData
@@ -11,14 +13,13 @@
 	$: ({ categories, post } = data)
 	$: errors = form?.errors
 
-	const savePost: SubmitFunction = ({ action, data, form }) => {
+	let modal: HTMLDialogElement
+
+	const savePost: SubmitFunction = () => {
 		return async ({ result, update }) => {
 			switch (result.type) {
 				case 'success':
 					toast.success('Changes saved')
-					break
-				case 'redirect':
-					toast.success('Post deleted')
 					break
 				case 'error':
 					toast.error('Something went wrong')
@@ -28,7 +29,22 @@
 			update({ reset: false })
 		}
 	}
+
+	function openModal() {
+		modal.showModal()
+	}
 </script>
+
+<Modal bind:modal title="Are you sure?" text="Deleting a post is permanent.">
+	<form method="POST" action="?/delete" style="margin: 0">
+		<button class="danger" type="submit">
+			<div class="items-center">
+				<Trash2 />
+				<span>Delete</span>
+			</div>
+		</button>
+	</form>
+</Modal>
 
 <section>
 	<h1>Editing</h1>
@@ -160,7 +176,7 @@
 			</div>
 
 			<div>
-				<button class="danger" formaction="?/delete" type="submit">
+				<button on:click={openModal} class="danger" type="button">
 					<div class="items-center">
 						<Trash2 />
 						<span>Delete</span>
