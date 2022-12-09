@@ -175,6 +175,18 @@ samp {
 	overflow: hidden;
 }
 
+button,
+[role='button'] {
+	--color: hsl(206 29% 98%);
+	--background-color: hsl(206 29% 20%);
+	--border-color: hsl(206 29% 24%);
+}
+
+:is(button, [role='button']):hover {
+	--background-color: hsl(206 29% 28%);
+	--border-color: hsl(206 29% 28%);
+}
+
 button.danger {
 	--color: hsl(9 100% 60%);
 	--background-color: hsl(9 100% 14%);

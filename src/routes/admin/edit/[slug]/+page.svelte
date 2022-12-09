@@ -166,7 +166,7 @@
 					role="button"
 					target="_blank"
 					rel="noreferrer"
-					class="contrast outline"
+					class="outline"
 				>
 					<div class="items-center">
 						<Eye />
