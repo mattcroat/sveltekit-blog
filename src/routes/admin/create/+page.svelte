@@ -1,15 +1,19 @@
 <script lang="ts">
+	import { enhance, type SubmitFunction } from '$app/forms'
+	import type { ActionData, PageServerData } from './$types'
+
 	import { Save } from 'lucide-svelte'
 	import { toast } from 'svelte-french-toast'
 
-	import { enhance, type SubmitFunction } from '$app/forms'
-	import type { ActionData, PageServerData } from './$types'
+	import Editor from '$lib/components/editor.svelte'
 
 	export let data: PageServerData
 	export let form: ActionData
 
 	$: ({ categories } = data)
 	$: errors = form?.errors
+
+	let markdown: string
 
 	const createPost: SubmitFunction = () => {
 		return async ({ result, update }) => {
@@ -28,6 +32,10 @@
 
 			update()
 		}
+	}
+
+	function updateMarkdown(event: CustomEvent) {
+		markdown = event.detail.markdown
 	}
 </script>
 
@@ -115,8 +123,12 @@
 
 		<label>
 			<span>Markdown</span>
-			<textarea name="markdown" rows="10" />
+			<textarea bind:value={markdown} name="markdown" rows="10" hidden />
 		</label>
+
+		<div class="editor">
+			<Editor on:update={updateMarkdown} />
+		</div>
 
 		<div class="flex">
 			<label>

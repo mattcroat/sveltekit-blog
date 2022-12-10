@@ -6,6 +6,7 @@
 	import toast from 'svelte-french-toast'
 
 	import Modal from '$lib/components/modal.svelte'
+	import Editor from '$lib/components/editor.svelte'
 
 	export let data: PageServerData
 	export let form: ActionData
@@ -14,6 +15,7 @@
 	$: errors = form?.errors
 
 	let modal: HTMLDialogElement
+	let markdown: string
 
 	const savePost: SubmitFunction = () => {
 		return async ({ result, update }) => {
@@ -32,6 +34,10 @@
 
 	function openModal() {
 		modal.showModal()
+	}
+
+	function updateMarkdown(event: CustomEvent) {
+		markdown = event.detail.markdown
 	}
 </script>
 
@@ -128,8 +134,12 @@
 
 		<label>
 			<span>Markdown</span>
-			<textarea name="markdown" rows="10" value={post.markdown} />
+			<textarea bind:value={markdown} name="markdown" rows="10" hidden />
 		</label>
+
+		<div class="editor">
+			<Editor initialValue={post.markdown} on:update={updateMarkdown} />
+		</div>
 
 		<div class="flex">
 			<label>
