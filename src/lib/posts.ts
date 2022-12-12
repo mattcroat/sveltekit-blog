@@ -27,18 +27,6 @@ export async function getPosts() {
 }
 
 export async function searchPosts(searchTerm?: string) {
-	if (searchTerm) {
-		const posts = await db.post.findMany({
-			select: { slug: true, title: true },
-		})
-
-		const results = posts.filter((post) =>
-			post.title.toLowerCase().includes(searchTerm.toLowerCase())
-		)
-
-		return results
-	}
-
 	if (!searchTerm) {
 		return await db.post.findMany({
 			select: {
@@ -47,6 +35,16 @@ export async function searchPosts(searchTerm?: string) {
 			},
 		})
 	}
+
+	const posts = await db.post.findMany({
+		select: { slug: true, title: true },
+	})
+
+	const results = posts.filter((post) =>
+		post.title.toLowerCase().includes(searchTerm.toLowerCase())
+	)
+
+	return results
 }
 
 export async function getFeaturedPost() {

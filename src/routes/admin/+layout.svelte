@@ -1,11 +1,5 @@
 <script lang="ts">
-	import type { PageData } from './$types'
-
 	import Search from './search.svelte'
-
-	export let data: PageData
-
-	$: ({ posts } = data)
 </script>
 
 <svelte:head>
@@ -15,7 +9,7 @@
 <div class="container">
 	<main>
 		<div class="search">
-			<Search {posts} />
+			<Search />
 		</div>
 
 		<div class="editor">

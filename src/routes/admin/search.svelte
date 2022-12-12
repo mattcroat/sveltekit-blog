@@ -1,31 +1,48 @@
 <script lang="ts">
-	type Post = {
-		slug: string
-		title: string
+	let searchTerm = ''
+	let results = search()
+
+	async function search() {
+		const url = `/api/search?term=${searchTerm}`
+		const response = await fetch(url, { method: 'GET' })
+		return response.json()
 	}
 
-	export let posts: Post[]
+	function handleSubmit() {
+		results = search()
+	}
 </script>
 
 <aside>
 	<h2>Posts</h2>
 
 	<div class="search">
-		<form method="GET" action="/admin?/search" autocomplete="off">
-			<input type="search" name="search" placeholder="Search" />
+		<form on:submit|preventDefault={handleSubmit}>
+			<input
+				bind:value={searchTerm}
+				type="search"
+				name="search"
+				placeholder="Search"
+			/>
 		</form>
 	</div>
 
 	<div class="results">
-		<ul>
-			{#each posts as post}
-				<li>
-					<a href="/admin/edit/{post.slug}">
-						{post.title}
-					</a>
-				</li>
-			{/each}
-		</ul>
+		{#await results}
+			<p>Loading...</p>
+		{:then results}
+			<ul>
+				{#each results as result}
+					<li>
+						<a href="/admin/edit/{result.slug}">
+							{result.title}
+						</a>
+					</li>
+				{/each}
+			</ul>
+		{:catch error}
+			<p class="error">{error.message}</p>
+		{/await}
 	</div>
 </aside>
 
@@ -42,5 +59,9 @@
 		max-height: 400px;
 		overflow-y: auto;
 		text-transform: capitalize;
+	}
+
+	.error {
+		color: var(--clr-text-error);
 	}
 </style>
