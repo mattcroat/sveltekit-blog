@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 
+@import '@toast-ui/editor/dist/toastui-editor.css';
+@import '@toast-ui/editor/dist/theme/toastui-editor-dark.css';
+@import 'highlight.js/styles/base16/material.css';
+
 @custom-media --sm (width >= 640px);
 @custom-media --md (width >= 768px);
 @custom-media --lg (width >= 1024px);
@@ -197,4 +201,105 @@ button.danger:hover {
 	--color: hsl(9 100% 64%);
 	--background-color: hsl(9 100% 18%);
 	--border-color: hsl(9 100% 20%);
+}
+
+.editor {
+	margin-block: var(--space-2);
+
+	& .ProseMirror {
+		font-size: var(--fs-1);
+		font-family: var(--font-sans);
+	}
+
+	& .toastui-editor-defaultUI {
+		font-family: var(--font-sans);
+	}
+
+	&
+		:is(
+			.toastui-editor-dark .toastui-editor-md-tab-container,
+			.toastui-editor-dark .toastui-editor-defaultUI-toolbar,
+			.toastui-editor-dark .toastui-editor-md-tab-container .tab-item,
+			.toastui-editor-dark .toastui-editor-mode-switch .tab-item
+		) {
+		background: none;
+	}
+
+	&
+		:is(
+			.toastui-editor-dark.toastui-editor-defaultUI,
+			.toastui-editor-dark .toastui-editor-md-tab-container .tab-item,
+			.toastui-editor-dark .toastui-editor-toolbar-icons,
+			.toastui-editor-dark .toastui-editor-mode-switch .tab-item
+		) {
+		border: 1px solid var(--form-element-border-color);
+	}
+
+	&
+		:is(
+			.toastui-editor-dark .toastui-editor-defaultUI-toolbar,
+			.toastui-editor-dark .toastui-editor-md-tab-container
+		) {
+		border-bottom-color: var(--form-element-border-color);
+	}
+
+	& .toastui-editor-dark .toastui-editor-mode-switch {
+		border-top-color: var(--form-element-border-color);
+	}
+
+	& .toastui-editor-dark .toastui-editor-md-tab-container .tab-item.active {
+		background: none;
+	}
+
+	&
+		:is(
+			.toastui-editor-dark .toastui-editor-md-container,
+			.toastui-editor-dark .toastui-editor-ww-container,
+			.toastui-editor-dark .toastui-editor-mode-switch
+		) {
+		background: none;
+	}
+
+	& .toastui-editor-dark .toastui-editor-dropdown-toolbar {
+		border-color: var(--form-element-border-color);
+		background: none;
+	}
+
+	& .toastui-editor-dark .toastui-editor-mode-switch .tab-item.active {
+		background: none;
+	}
+
+	& .toastui-editor-dark .toastui-editor-md-code-block-line-background {
+		background: none;
+	}
+}
+
+.prose {
+	@media (--sm) {
+		max-width: 60ch;
+		margin-top: var(--space-7);
+		margin-inline: auto;
+	}
+
+	& pre {
+		border-radius: var(--round-1);
+	}
+
+	& code {
+		font-size: var(--fs-1);
+	}
+
+	& h1 {
+		margin-bottom: var(--space-7);
+		text-align: center;
+	}
+
+	& a {
+		text-decoration: underline;
+		transition: color 0.3s ease;
+
+		&:hover {
+			color: var(--clr-brand);
+		}
+	}
 }
