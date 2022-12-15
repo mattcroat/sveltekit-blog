@@ -17,7 +17,7 @@
 	<h2>Posts</h2>
 
 	<div class="search">
-		<form on:submit|preventDefault={handleSubmit}>
+		<form on:submit|preventDefault={handleSubmit} autocomplete="off">
 			<input
 				bind:value={searchTerm}
 				type="search"
@@ -29,7 +29,7 @@
 
 	<div class="results">
 		{#await results}
-			<p>Loading...</p>
+			<div aria-busy="true" />
 		{:then results}
 			<ul>
 				{#each results as result}

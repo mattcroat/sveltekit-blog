@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher, onMount } from 'svelte'
-	import type Editor from '@toast-ui/editor'
+	import Editor from '@toast-ui/editor'
 
 	import '@toast-ui/editor/dist/toastui-editor.css'
 	import '@toast-ui/editor/dist/theme/toastui-editor-dark.css'
@@ -8,16 +8,11 @@
 	export let initialValue: string = ''
 
 	const dispatch = createEventDispatcher()
-	let editor: Editor
 
-	function getMarkdown() {
-		dispatch('update', { markdown: editor.getMarkdown() })
-	}
+	let editor: Editor
+	let loading = true
 
 	async function loadEditor() {
-		const toastui = await import('@toast-ui/editor')
-		const Editor = toastui.Editor
-
 		editor = new Editor({
 			initialValue,
 			el: document.querySelector('#editor')!,
@@ -28,8 +23,13 @@
 			usageStatistics: false,
 			events: {
 				change: () => getMarkdown(),
+				load: () => (loading = false),
 			},
 		})
+	}
+
+	function getMarkdown() {
+		dispatch('update', { markdown: editor.getMarkdown() })
 	}
 
 	onMount(() => {
@@ -37,4 +37,16 @@
 	})
 </script>
 
+{#if loading}
+	<div class="loading" aria-busy={loading} />
+{/if}
+
 <div id="editor" />
+
+<style lang="postcss">
+	.loading {
+		display: grid;
+		place-content: center;
+		height: 600px;
+	}
+</style>
