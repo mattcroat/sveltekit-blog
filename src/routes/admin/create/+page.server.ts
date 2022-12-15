@@ -1,4 +1,4 @@
-import { invalid, redirect } from '@sveltejs/kit'
+import { fail, redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
 
 import { createPost, getCategories } from '$lib/posts'
@@ -16,7 +16,7 @@ export const actions: Actions = {
 		const validatedPost = validate(formData, postSchema)
 
 		if (validatedPost.errors) {
-			return invalid(400, {
+			return fail(400, {
 				error: true,
 				errors: validatedPost.errors.fieldErrors,
 			})
